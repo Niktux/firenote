@@ -47,9 +47,9 @@ class Application extends \Silex\Application
                 'driver'   => $this->configuration->read('db/server/driver', 'pdo_mysql'),
                 'host'     => $this->configuration->read('db/server/host', 'localhost'),
                 'port'     => $this->configuration->read('db/server/port', 3306),
-                'dbname'   => $this->configuration->readRequired('db/server/database'),
-                'user'     => $this->configuration->readRequired('db/server/user'),
-                'password' => $this->configuration->readRequired('db/server/password'),
+                'dbname'   => $this->configuration->read('db/server/database'),
+                'user'     => $this->configuration->read('db/server/user'),
+                'password' => $this->configuration->read('db/server/password'),
                 'charset'  => 'utf8'
             ),
         ));

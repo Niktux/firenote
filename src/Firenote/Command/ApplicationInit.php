@@ -13,7 +13,8 @@ class ApplicationInit extends Command
     private
         $workingDirectory,
         $appName,
-        $namespace;
+        $namespace,
+        $database;
     
     protected function configure()
     {
@@ -39,8 +40,6 @@ class ApplicationInit extends Command
         $this->createDirectories();
         $this->createFiles();
         $this->installAssets();
-        
-        $this->writeln('ok');
     }
     
     private function setEnvironment()
@@ -48,8 +47,7 @@ class ApplicationInit extends Command
         $this->step('Set environment');
         
         $this->appName = $this->ask('Application name : ', 'MyApp');
-        $this->setNamespace();
-        $this->writeln("<comment>Namespace will be $this->namespace</comment>");
+        $this->setAppNameVariations();
         
         $this->setRootDirectory($this->input->getArgument('workingDir'));
         $this->writeln("<comment>Working into $this->workingDirectory</comment>");
@@ -59,9 +57,13 @@ class ApplicationInit extends Command
         return $reply;
     }
     
-    private function setNamespace()
+    private function setAppNameVariations()
     {
         $this->namespace = preg_replace('~\s+~', '', ucwords($this->appName));
+        $this->writeln("<comment>Namespace will be $this->namespace</comment>");
+        
+        $this->database = preg_replace('~\s+~', '_', strtolower($this->appName));
+        $this->writeln("<comment>Databse will be $this->database</comment>");
     }
     
     private function setRootDirectory($argument)
@@ -133,7 +135,7 @@ server:
   driver: pdo_mysql
   host: localhost
   port: 3306
-  database:
+  database: $this->database
   user:
   password:
 

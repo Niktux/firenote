@@ -10,6 +10,7 @@ class Console
     {
         $app = new Application();
         $app->add(new Command\ApplicationInit());
+        $app->add(new Command\DatabaseCreate());
         $app->run();
     }
 }

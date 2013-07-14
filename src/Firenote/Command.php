@@ -52,6 +52,7 @@ ASCII;
         ));
         
         $this->doExecute();
+        $this->writeln('Execution finished');
     }
     
     protected function step($step)
