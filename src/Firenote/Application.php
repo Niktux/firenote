@@ -3,7 +3,6 @@
 namespace Firenote;
 
 use Silex\Provider\MonologServiceProvider;
-
 use Silex\Provider\RememberMeServiceProvider;
 use Silex\Provider\SecurityServiceProvider;
 use Silex\Provider\SessionServiceProvider;
@@ -23,46 +22,34 @@ class Application extends \Silex\Application
     private
         $configuration;
     
-    public function __construct($configurationFile)
+    public function __construct(Configuration $configuration)
     {
         parent::__construct();
-
-        $this['startTime'] = microtime(true);
-        $this['logs.path'] = __DIR__ . '/../../logs/';
-        $this['cache.path'] = __DIR__ . '/../../cache/';
         
-        $this->loadConfiguration($configurationFile);
+        $this['startTime'] = microtime(true);
+        
+        $rootDir = __DIR__ . '/../../';
+        $this['logs.path']  = $rootDir . 'logs/';
+        $this['cache.path'] = $rootDir . 'cache/';
+        
+        $this->configuration = $configuration;
+        
         $this->initializeDatabase();
         $this->initializeBuiltInServices();
         $this->initializeTemplateEngine();
-        $this->initializeSpecificServices();
-    }
-    
-    private function loadConfiguration($configurationFile)
-    {
-        if(! is_file($configurationFile))
-        {
-            throw new \Exception("Configuration not found at location [$configurationFile]");
-        }
-        
-        $this->configuration = Yaml::parse($configurationFile);
+        $this->initializeApplicationServices();
     }
     
     private function initializeDatabase()
     {
-        if(! isset($this->configuration['db']['user'])
-        || ! isset($this->configuration['db']['password']))
-        {
-            throw new \Exception('Missing database configuration (expecting db/user and db/password');
-        }
-        
         $this->register(new DoctrineServiceProvider(), array(
             'db.options' => array(
-                'driver'   => 'pdo_mysql',
-                'host'     => 'localhost',
-                'dbname'   => 'ludo',
-                'user'     => $this->configuration['db']['user'],
-                'password' => $this->configuration['db']['password'],
+                'driver'   => $this->configuration->read('db/server/driver', 'pdo_mysql'),
+                'host'     => $this->configuration->read('db/server/host', 'localhost'),
+                'port'     => $this->configuration->read('db/server/port', 3306),
+                'dbname'   => $this->configuration->readRequired('db/server/database'),
+                'user'     => $this->configuration->readRequired('db/server/user'),
+                'password' => $this->configuration->readRequired('db/server/password'),
                 'charset'  => 'utf8'
             ),
         ));
@@ -79,15 +66,13 @@ class Application extends \Silex\Application
         $this->register(new ValidatorServiceProvider());
         $this->register(new SessionServiceProvider());
         $this->register(new SecurityServiceProvider(), array(
-            'security.firewalls' => $this->configureACL(),
-            'security.access_rules' => array(
-                array('^.*$', 'ROLE_ADMIN'),
-            ),
+            'security.firewalls' => $this->getSecurityFirewalls(),
+            'security.access_rules' => $this->getAccessRules(),
         ));
         $this->register(new RememberMeServiceProvider());
     }
     
-    private function configureACL()
+    private function getSecurityFirewalls()
     {
         $app = $this;
         $this->get('/login', function(Request $request) use ($app) {
@@ -102,7 +87,7 @@ class Application extends \Silex\Application
                 'pattern' => '^/login$',
             ),
             'secured' => array(
-                'pattern' => '^.*$',
+                'pattern' => '^/admin/',
                 'form' => array(
                     'login_path' => '/login',
                     'check_path' => '/admin/login_check'
@@ -116,6 +101,13 @@ class Application extends \Silex\Application
         );
     }
     
+    private function getAccessRules()
+    {
+        return array(
+            array('^/admin/', 'ROLE_ADMIN'),
+        );
+    }
+    
     private function initializeTemplateEngine()
     {
         $this->register(new TwigServiceProvider(), array(
@@ -124,18 +116,8 @@ class Application extends \Silex\Application
         ));
     }
     
-    private function initializeSpecificServices()
+    protected function initializeApplicationServices()
     {
-        $app = $this;
-        
-        $this['searchEngine'] = function() use($app) {
-            return new Search\Engine($app['db'], $app['games']);
-        };
-        
-        $this['games'] = function() use($app) {
-            return new Model\Games($app['db'], $app->configuration['domain']);
-        };
-        
     }
     
     public function enableDebug()
@@ -160,5 +142,10 @@ class Application extends \Silex\Application
         });
         
         return $this;
+    }
+    
+    public function mountProviders()
+    {
+        $this->mount('/', new Controllers\Admin\Provider());
     }
 }

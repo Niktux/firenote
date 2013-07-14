@@ -12,7 +12,7 @@
     "require":
     {
         "php": ">=5.3.3",
-        "silex/silex": "1.0.0",
+        "silex/silex": "1.*",
         "silex/web-profiler": "~1.0",
         "symfony/console": "2.*",
         "doctrine/dbal": "2.2.*",
@@ -30,7 +30,12 @@
     },
     "autoload":
     {
-        "psr-0": {"": "src/"}   
+        "psr-0": 
+        {
+            "Firenote": "src/",
+            "": "src/"
+        }   
+            
     },
     "bin": [
         "bin/fire"    
