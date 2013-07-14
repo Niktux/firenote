@@ -2,21 +2,11 @@
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 				{% block shortcuts %}
 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						<button class="btn btn-small btn-success">
-							<i class="icon-signal"></i>
-						</button>
-
-						<button class="btn btn-small btn-info">
-							<i class="icon-pencil"></i>
-						</button>
-
-						<button class="btn btn-small btn-warning">
-							<i class="icon-group"></i>
-						</button>
-
-						<button class="btn btn-small btn-danger">
-							<i class="icon-cogs"></i>
-						</button>
+					    {% for shortcut in shortcuts %}
+						<a href="{{ shortcut.link }}" class="btn btn-small btn-{{ shortcut.style }}">
+							<i class="{{ shortcut.icon }}"></i>
+						</a>
+						{% endfor %}
 					</div>
 
 					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
@@ -29,206 +19,47 @@
 				</div><!--#sidebar-shortcuts-->
 
 				<ul class="nav nav-list">
+				
+			    {% for menu in menus %}
 					<li>
-						<a href="index.html">
-							<i class="icon-dashboard"></i>
-							<span class="menu-text"> Dashboard </span>
-						</a>
-					</li>
-
-					<li>
+				    {% if menu.hasSubmenus %}
 						<a href="#" class="dropdown-toggle">
-							<i class="icon-desktop"></i>
-							<span class="menu-text"> UI Elements </span>
-
-							<b class="arrow icon-angle-down"></b>
+				    {% else %}
+						<a href="{{ menu.link }}">
+				    {% endif %}
+							<i class="{{ menu.icon }}"></i>
+							<span class="menu-text"> {{ menu.label }} </span>
+				        {% if menu.hasSubmenus %}<b class="arrow icon-angle-down"></b>{% endif %}
 						</a>
-
-						<ul class="submenu">
-							<li>
-								<a href="elements.html">
-									<i class="icon-double-angle-right"></i>
-									Elements
-								</a>
-							</li>
-
-							<li>
-								<a href="buttons.html">
-									<i class="icon-double-angle-right"></i>
-									Buttons &amp; Icons
-								</a>
-							</li>
-
-							<li>
-								<a href="treeview.html">
-									<i class="icon-double-angle-right"></i>
-									Treeview
-								</a>
-							</li>
-
-							<li>
-								<a href="#" class="dropdown-toggle">
-									<i class="icon-double-angle-right"></i>
-
-									Three Level Menu
-									<b class="arrow icon-angle-down"></b>
-								</a>
-
-								<ul class="submenu">
-									<li>
-										<a href="#">
-											<i class="icon-leaf"></i>
-											Item #1
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="dropdown-toggle">
-											<i class="icon-pencil"></i>
-
-											4th level
-											<b class="arrow icon-angle-down"></b>
-										</a>
-
-										<ul class="submenu">
-											<li>
-												<a href="#">
-													<i class="icon-plus"></i>
-													Add Product
-												</a>
-											</li>
-
-											<li>
-												<a href="#">
-													<i class="icon-eye-open"></i>
-													View Products
-												</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<li>
-						<a href="#" class="dropdown-toggle">
-							<i class="icon-edit"></i>
-							<span class="menu-text"> Forms </span>
-
-							<b class="arrow icon-angle-down"></b>
-						</a>
-
-						<ul class="submenu">
-							<li>
-								<a href="form-elements.html">
-									<i class="icon-double-angle-right"></i>
-									Form Elements
-								</a>
-							</li>
-
-							<li>
-								<a href="form-wizard.html">
-									<i class="icon-double-angle-right"></i>
-									Wizard &amp; Validation
-								</a>
-							</li>
-
-							<li>
-								<a href="wysiwyg.html">
-									<i class="icon-double-angle-right"></i>
-									Wysiwyg &amp; Markdown
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<li>
-						<a href="calendar.html">
-							<i class="icon-calendar"></i>
-
-							<span class="menu-text">
-								Calendar
-								<span class="badge badge-transparent tooltip-error" title="2&nbsp;Important&nbsp;Events">
-									<i class="icon-warning-sign red bigger-130"></i>
-								</span>
-							</span>
-						</a>
-					</li>
-
-					<li>
-						<a href="#" class="dropdown-toggle">
-							<i class="icon-tag"></i>
-							<span class="menu-text"> More Pages </span>
-
-							<b class="arrow icon-angle-down"></b>
-						</a>
-
-						<ul class="submenu">
-							<li>
-								<a href="profile.html">
-									<i class="icon-double-angle-right"></i>
-									User Profile
-								</a>
-							</li>
-
-							<li>
-								<a href="pricing.html">
-									<i class="icon-double-angle-right"></i>
-									Pricing Tables
-								</a>
-							</li>
-
-							<li>
-								<a href="invoice.html">
-									<i class="icon-double-angle-right"></i>
-									Invoice
-								</a>
-							</li>
-
-							<li>
-								<a href="login.html">
-									<i class="icon-double-angle-right"></i>
-									Login &amp; Register
-								</a>
-							</li>
-						</ul>
-					</li>
-
+						
+						{% if menu.hasSubmenus %}
+    						<ul class="submenu">
+						    {% for submenu in menu.submenus %}
+    							<li>
+    								<a href="{{ submenu.link }}">
+    									<i class="icon-double-angle-right"></i>
+    									{{ submenu.label }}
+    								</a>
+    							</li>
+							{% endfor %}
+    						</ul>
+						{% endif %}
+						</li>
+                {% endfor %}
+                
+					<!--
 					<li class="active open">
 						<a href="#" class="dropdown-toggle">
 							<i class="icon-file-alt"></i>
 
 							<span class="menu-text">
 								Other Pages
-								<span class="badge badge-primary ">4</span>
 							</span>
 
 							<b class="arrow icon-angle-down"></b>
 						</a>
 
 						<ul class="submenu">
-							<li>
-								<a href="error-404.html">
-									<i class="icon-double-angle-right"></i>
-									Error 404
-								</a>
-							</li>
-
-							<li>
-								<a href="error-500.html">
-									<i class="icon-double-angle-right"></i>
-									Error 500
-								</a>
-							</li>
-
-							<li>
-								<a href="grid.html">
-									<i class="icon-double-angle-right"></i>
-									Grid
-								</a>
-							</li>
-
 							<li class="active">
 								<a href="blank.html">
 									<i class="icon-double-angle-right"></i>
@@ -237,6 +68,7 @@
 							</li>
 						</ul>
 					</li>
+					-->
 				</ul><!--/.nav-list-->
 
 				<div class="sidebar-collapse" id="sidebar-collapse">

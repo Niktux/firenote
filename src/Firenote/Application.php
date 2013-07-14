@@ -2,6 +2,7 @@
 
 namespace Firenote;
 
+use Firenote\AdminLayout;
 use Silex\Provider\MonologServiceProvider;
 use Silex\Provider\RememberMeServiceProvider;
 use Silex\Provider\SecurityServiceProvider;
@@ -37,6 +38,7 @@ class Application extends \Silex\Application
         $this->initializeDatabase();
         $this->initializeBuiltInServices();
         $this->initializeTemplateEngine();
+        $this->initializeFirenoteServices();
         $this->initializeApplicationServices();
     }
     
@@ -116,6 +118,13 @@ class Application extends \Silex\Application
         ));
     }
     
+    protected function initializeFirenoteServices()
+    {
+        $this['layout'] = $this->share(function () {
+            return new AdminLayout();
+        });
+    }
+    
     protected function initializeApplicationServices()
     {
     }
@@ -147,5 +156,16 @@ class Application extends \Silex\Application
     public function mountProviders()
     {
         $this->mount('/', new Controllers\Admin\Provider());
+    }
+    
+    public function initializeAdminLayout()
+    {
+        $this->configureAdminLayout($this['layout']);
+        
+        return $this;
+    }
+    
+    protected function configureAdminLayout(AdminLayout $layout)
+    {
     }
 }
