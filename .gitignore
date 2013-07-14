@@ -12,3 +12,4 @@ logs
 
 # Test files
 src/MyApp
+web/index.php
