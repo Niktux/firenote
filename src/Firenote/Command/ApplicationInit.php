@@ -163,6 +163,8 @@ CONTENT
 <?php
                 
 namespace $this->namespace;
+
+use Firenote\\Layout\\Menu as Menu;
                 
 class Application extends \\Firenote\\Application
 {
