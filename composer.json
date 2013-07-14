@@ -33,6 +33,6 @@
         "psr-0": {"": "src/"}   
     },
     "bin": [
-        "bin\fire"    
+        "bin/fire"    
     ]
 }
