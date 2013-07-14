@@ -4,8 +4,12 @@ namespace Firenote;
 
 use Symfony\Component\Console\Application;
 
-require __DIR__ . '/../../vendor/autoload.php';
-
-$app = new Application();
-$app->add(new Command\ApplicationInit());
-$app->run();
+class Console
+{
+    public static function run()
+    {
+        $app = new Application();
+        $app->add(new Command\ApplicationInit());
+        $app->run();
+    }
+}

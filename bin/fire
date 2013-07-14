@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+$files = array(
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '/../../../autoload.php'
+);
+
+foreach($files as $file)
+{
+	if(is_file($file))
+	{
+		require $file;
+		break;
+	}
+}
+
+Firenote\Console::run();
