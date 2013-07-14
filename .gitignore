@@ -9,3 +9,6 @@ vendor
 # Runtime files
 cache
 logs
+
+# Test files
+src/MyApp
