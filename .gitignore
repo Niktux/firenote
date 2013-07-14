@@ -1,0 +1,11 @@
+# Dependencies
+vendor
+
+# Eclipse files
+.settings
+.project
+.buildpath
+
+# Runtime files
+cache
+logs
