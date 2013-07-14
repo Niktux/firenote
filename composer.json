@@ -33,6 +33,6 @@
         "psr-0": {"": "src/"}   
     },
     "bin": [
-        "src/Firenote/Console"    
+        "src/Firenote/Console.php"    
     ]
 }
