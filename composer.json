@@ -31,5 +31,8 @@
     "autoload":
     {
         "psr-0": {"": "src/"}   
-    }
+    },
+    "bin": [
+        "src/Firenote/Console"    
+    ]
 }
