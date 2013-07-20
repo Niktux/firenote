@@ -63,7 +63,10 @@ class ApplicationInit extends Command
     private function collectDatabaseAccess()
     {
         $this->step('Collect database access');
+
+        $defaultDatabase = preg_replace('~\s+~', '_', strtolower($this->appName));
     
+        $this->database = $this->ask('Database : ', $defaultDatabase);
         $this->databaseUser = $this->ask('User : ', 'root');
         $this->databasePassword = $this->ask('Password : ', '');
     }
@@ -73,8 +76,6 @@ class ApplicationInit extends Command
         $this->namespace = preg_replace('~\s+~', '', ucwords($this->appName));
         $this->writeln("<comment>Namespace will be $this->namespace</comment>");
         
-        $this->database = preg_replace('~\s+~', '_', strtolower($this->appName));
-        $this->writeln("<comment>Databse will be $this->database</comment>");
     }
     
     private function setRootDirectory($argument)
@@ -200,6 +201,13 @@ class Application extends \\Firenote\\Application
         ;
         //*/
     }
+                
+    public function mountProviders()
+    {
+        parent::mountProviders();
+        
+        \$this->mount('/', new Controllers\Home\Provider());
+    }
 }
 CONTENT
 ,
@@ -250,7 +258,7 @@ CONTENT
 
             'views/home.twig' => <<<CONTENT
 <h1>Firenote</h1>
-<a href="/admin/login">Login</a>
+<a href="/admin">Back office</a>
 CONTENT
                 
         );
