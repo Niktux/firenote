@@ -11,19 +11,22 @@ class AdminLayout
         $user,
         $shortcutStyles,
         $shortcuts,
-        $menus;
+        $menus,
+        $appName;
     
-    public function __construct()
+    public function __construct($appName = 'Firenote')
     {
         $this->shortcutStyles = array('success', 'info', 'warning', 'danger');
         $this->shortcuts = array();
         $this->menus = array();
         $this->user = null;
+        $this->appName = $appName;
     }
     
     public function getVariables()
     {
         return array(
+            'appName' => $this->appName,
             'menus' => $this->menus,
             'shortcuts' => $this->shortcuts,
             'user' => $this->user,
@@ -61,6 +64,13 @@ class AdminLayout
     public function setUser($user)
     {
         $this->user = $user;
+        
+        return $this;
+    }
+
+    public function setAppName($appName)
+    {
+        $this->appName = $appName;
         
         return $this;
     }
