@@ -23,15 +23,16 @@ class Application extends \Silex\Application
     private
         $configuration;
     
-    public function __construct(Configuration $configuration)
+    public function __construct(Configuration $configuration, $rootDir = null)
     {
         parent::__construct();
         
         $this['startTime'] = microtime(true);
         
-        $rootDir = __DIR__ . '/../../';
-        $this['logs.path']  = $rootDir . 'logs/';
-        $this['cache.path'] = $rootDir . 'cache/';
+        $this->processRootDir($rootDir);
+        
+        $this['logs.path']  = $this['rootDir.path'] . 'logs/';
+        $this['cache.path'] = $this['rootDir.path'] . 'cache/';
         
         $this->configuration = $configuration;
         
@@ -40,6 +41,18 @@ class Application extends \Silex\Application
         $this->initializeTemplateEngine();
         $this->initializeFirenoteServices();
         $this->initializeApplicationServices();
+    }
+    
+    private function processRootDir($rootDir = null)
+    {
+        $this['rootDir.set'] = $rootDir !== null;
+        
+        if($rootDir === null)
+        {
+            $rootDir = __DIR__ . '/../../';
+        }
+        
+        $this['rootDir.path'] = rtrim($rootDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
     }
     
     private function initializeDatabase()
@@ -112,8 +125,14 @@ class Application extends \Silex\Application
     
     private function initializeTemplateEngine()
     {
+        $twigPath = array(__DIR__ . '/../../views');
+        if($this['rootDir.set'] === true)
+        {
+            $twigPath[] = $this['rootDir.path'] . 'views';
+        }
+        
         $this->register(new TwigServiceProvider(), array(
-            'twig.path'    => array(__DIR__ . '/../../views'),
+            'twig.path'    => $twigPath,
             'twig.options' => array('cache' => $this['cache.path'] . 'twig'),
         ));
     }

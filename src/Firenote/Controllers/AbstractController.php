@@ -15,7 +15,7 @@ abstract class AbstractController
         $layout,
         $request;
     
-    public function __construct(\Doctrine\DBAL\Driver\Connection $db, \Twig_Environment $twig, Request $request, AdminLayout $layout, UsernamePasswordToken $token)
+    public function __construct(\Doctrine\DBAL\Driver\Connection $db, \Twig_Environment $twig, Request $request, AdminLayout $layout, UsernamePasswordToken $token = null)
     {
         $this->db = $db;
         $this->twig = $twig;
@@ -28,7 +28,7 @@ abstract class AbstractController
         }
     }
     
-    protected function renderResponse($template, $variables)
+    protected function renderResponse($template, $variables = array())
     {
         $variables = array_merge($variables, $this->layout->getVariables());
         
