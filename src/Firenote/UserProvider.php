@@ -48,4 +48,20 @@ class UserProvider implements UserProviderInterface
     {
         return $class === 'Symfony\Component\Security\Core\User\User';
     }
+    
+    public function listAll()
+    {
+        $stmt = $this->db->executeQuery('SELECT * FROM comptes');
+    
+        $users = array();
+        while($user = $stmt->fetch())
+        {
+            $users[] = new User(
+                $user['login'], $user['encpass'], explode(',', $user['roles']), true, true, true, true
+            );
+        }
+        
+        return $users;
+    
+    }
 }

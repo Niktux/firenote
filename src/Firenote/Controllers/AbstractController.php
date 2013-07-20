@@ -2,39 +2,23 @@
 
 namespace Firenote\Controllers;
 
-use Firenote\AdminLayout;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-
 abstract class AbstractController
 {
     protected
-        $db,
-        $twig,
-        $layout,
-        $request;
+        $api,
+        $request,
+        $layout;
     
-    public function __construct(\Doctrine\DBAL\Driver\Connection $db, \Twig_Environment $twig, Request $request, AdminLayout $layout, UsernamePasswordToken $token = null)
+    public function __construct(\Firenote\ControllerAPI $api)
     {
-        $this->db = $db;
-        $this->twig = $twig;
-        $this->request = $request;
-        $this->layout = $layout;
+        $this->api = $api;
         
-        if($token !== null)
-        {
-            $this->layout->setUser($token->getUser());
-        }
+        $this->request = $this->api->getRequest();
+        $this->layout = $this->api->getLayout();
     }
     
     protected function renderResponse($template, $variables = array())
     {
-        $variables = array_merge($variables, $this->layout->getVariables());
-        
-        return new Response($this->twig->render(
-            $template,
-            $variables
-        ));
+        return $this->api->renderResponse($template, $variables);
     }
 }

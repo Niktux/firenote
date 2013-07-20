@@ -97,6 +97,12 @@ class Application extends \Silex\Application
             ));
         });
         
+        $userProviderClosure = function() use($app){
+            return new UserProvider($app['db']);
+        };
+        $this['user.provider'] = $this->share($userProviderClosure);
+        $this['user.provider.closure'] = $this->protect($userProviderClosure);
+        
         return array(
             'login' => array(
                 'pattern' => '^/user/login$',
@@ -109,9 +115,7 @@ class Application extends \Silex\Application
                 ),
                 'logout' => array('logout_path' => '/admin/logout'),
                 'remember_me' => array(),
-                'users' => $this->share(function() use($app){
-                    return new UserProvider($app['db']);
-                }),
+                'users' => $this['user.provider.closure'],
             ),
         );
     }
@@ -144,6 +148,11 @@ class Application extends \Silex\Application
         $this['layout'] = $this->share(function (){
             return new AdminLayout();
         });
+        
+        $this['controllerApi'] = $this->share(function () use ($app){
+            return new ControllerAPI($app);
+        });
+        
     }
     
     protected function initializeApplicationServices()

@@ -13,7 +13,7 @@ class Provider implements ControllerProviderInterface
     public function connect(Application \$app)
     {
         \$app['home.controller'] = \$app->share(function() use(\$app) {
-            return new Controller(\$app['db'], \$app['twig'], \$app['request'], \$app['layout'], \$app['security']->getToken());
+            return new Controller(\$app['controllerApi']);
         });
 
         // creates a new controller based on the default route

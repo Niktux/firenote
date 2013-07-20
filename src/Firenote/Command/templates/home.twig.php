@@ -8,7 +8,7 @@ return <<<CONTENT
     <div class="widget-body">
 	    <div class="widget-main">
 	        <a href="/admin" class="btn btn-danger btn-medium">
-	            <i class="icon-desktop" />
+	            <i class="icon-desktop"></i>
 	            Back office
 	        </a>
         </div>

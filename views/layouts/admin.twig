@@ -17,6 +17,8 @@
 			{% include 'parts/breadcrumb.twig' %}
 
 				<div class="page-content">
+				    {% block contentHeader %}
+				    {% endblock %}
 					<div class="row-fluid">
 						<div class="span12">
 						{% block content %}
