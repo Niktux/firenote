@@ -125,23 +125,7 @@ class ApplicationInit extends Command
     private function createFiles()
     {
         $files = array(
-            '.gitignore' => <<<CONTENT
-# Dependencies
-vendor
-
-# Secret files
-# config/db.yml
-
-# Runtime files
-cache/*
-logs/*
-
-# Eclipse files
-.buildpath
-.project
-.settings
-CONTENT
-,
+            '.gitignore' => include __DIR__ . '/templates/gitignore',
                 
          'config/db.yml' => <<<CONTENT
 server:
