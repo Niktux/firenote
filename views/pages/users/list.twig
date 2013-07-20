@@ -1,0 +1,112 @@
+{% extends 'layouts/admin.twig' %}
+
+{% block contentHeader %}
+<div class="page-header position-relative">
+	<h1>
+		Users
+    	<small>
+    		<i class="icon-double-angle-right"></i>
+    		list
+    	</small>
+	</h1>
+</div><!--/.page-header-->
+{% endblock %}
+
+{% block content %}
+	<table id="sample-table-1" class="table table-striped table-bordered table-hover">
+		<thead>
+			<tr>
+				<th class="center">
+					Enabled
+				</th>
+				<th>
+				    <i class="icon-user bigger-110"></i>
+				    Username
+			    </th>
+				<th>
+					<i class="icon-key bigger-110"></i>
+					Password
+				</th>
+				<th class="hidden-480">Roles</th>
+
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+		    {% for user in users %}
+			<tr>
+				<td class="center">
+					<label>
+						<input type="checkbox" {% if user.enabled %}checked{% endif %}/>
+						<span class="lbl"></span>
+					</label>
+				</td>
+
+				<td>{{ user.username }}</td>
+				<td>{{ user.password }}</td>
+
+				<td class="hidden-480">
+				{% for role in user.roles %}
+					<span class="label label-warning">{{ role }}</span>
+			    {% endfor %}
+				</td>
+
+				<td>
+					<div class="hidden-phone visible-desktop btn-group">
+						<button class="btn btn-mini btn-success">
+							<i class="icon-ok bigger-120"></i>
+						</button>
+
+						<button class="btn btn-mini btn-info">
+							<i class="icon-edit bigger-120"></i>
+						</button>
+
+						<button class="btn btn-mini btn-danger">
+							<i class="icon-trash bigger-120"></i>
+						</button>
+
+						<button class="btn btn-mini btn-warning">
+							<i class="icon-flag bigger-120"></i>
+						</button>
+					</div>
+
+					<div class="hidden-desktop visible-phone">
+						<div class="inline position-relative">
+							<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-cog icon-only bigger-110"></i>
+							</button>
+
+							<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
+								<li>
+									<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+										<span class="blue">
+											<i class="icon-zoom-in bigger-120"></i>
+										</span>
+									</a>
+								</li>
+
+								<li>
+									<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+										<span class="green">
+											<i class="icon-edit bigger-120"></i>
+										</span>
+									</a>
+								</li>
+
+								<li>
+									<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+										<span class="red">
+											<i class="icon-trash bigger-120"></i>
+										</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock content %}

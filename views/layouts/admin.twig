@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        {% include 'parts/page_head.twig' %}
+        {% block pageHead %}
+            {% include 'parts/page_head.twig' %}
+        {% endblock %}
     </head>
 	<body>
 	    {% include 'parts/nav_bar.twig' %}
@@ -35,6 +37,9 @@
 		</a>
 		{% endblock %}
 
-        {% include 'parts/footer_scripts.twig' %}
+		{% block footerScripts %}
+            {% include 'parts/footer_scripts.twig' %}
+        {% endblock %}
+        
 	</body>
 </html>

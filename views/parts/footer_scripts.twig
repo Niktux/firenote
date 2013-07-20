@@ -1,4 +1,3 @@
-		{% block scripts %}
 		<!--basic scripts-->
 
 		<!--[if !IE]>-->
@@ -19,13 +18,15 @@
 			if("ontouchend" in document) document.write("<script src='/assets/firenote/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 		<script src="/assets/firenote/js/bootstrap.min.js"></script>
-
+		
 		<!--page specific plugin scripts-->
+		{% block pageScripts %}
+		{% endblock %}
 
 		<!--ace scripts-->
-
 		<script src="/assets/firenote/js/ace-elements.min.js"></script>
 		<script src="/assets/firenote/js/ace.min.js"></script>
 
 		<!--inline scripts related to this page-->
+		{% block pageInlinedScripts %}
 		{% endblock %}

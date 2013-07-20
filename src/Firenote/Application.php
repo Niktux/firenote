@@ -186,7 +186,8 @@ class Application extends \Silex\Application
     public function mountProviders()
     {
         $this->mount('/admin', new Controllers\Admin\Provider());
-        $this->mount('/user', new Controllers\User\Provider());
+        $this->mount('/admin/users', new Controllers\Users\Provider());
+        $this->mount('/user', new Controllers\Login\Provider());
     }
     
     public function initializeAdminLayout()
