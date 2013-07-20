@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include 'parts/page_head.twig' %}
+    </head>
+	<body>
+	    {% include 'parts/nav_bar.twig' %}
+
+	    <div class="main-container container-fluid">
+			<a class="menu-toggler" id="menu-toggler" href="#">
+				<span class="menu-text"></span>
+			</a>
+			{% include 'parts/sidebar.twig' %}
+			
+			<div class="main-content">
+
+			{% include 'parts/breadcrumb.twig' %}
+
+				<div class="page-content">
+					<div class="row-fluid">
+						<div class="span12">
+						{% block content %}
+						{% endblock %}
+						</div><!--/.span-->
+					</div><!--/.row-fluid-->
+				</div><!--/.page-content-->
+			</div><!--/.main-content-->
+		</div><!--/.main-container-->
+
+		{% block toTopButton %}
+		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+			<i class="icon-double-angle-up icon-only bigger-110"></i>
+		</a>
+		{% endblock %}
+
+        {% include 'parts/footer_scripts.twig' %}
+	</body>
+</html>

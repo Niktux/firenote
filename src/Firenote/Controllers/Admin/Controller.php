@@ -8,12 +8,12 @@ class Controller extends \Firenote\Controllers\AbstractController
 {
     public function indexAction()
     {
-        return $this->renderResponse('layout.twig', array());
+        return $this->renderResponse('layouts/admin.twig', array());
     }
     
     public function usersAction()
     {
-        return $this->renderResponse('layout.twig', array(
+        return $this->renderResponse('layouts/admin.twig', array(
             'users' => array(),
         ));
     }

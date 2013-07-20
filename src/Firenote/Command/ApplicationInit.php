@@ -125,134 +125,24 @@ class ApplicationInit extends Command
     private function createFiles()
     {
         $files = array(
-            '.gitignore' => include __DIR__ . '/templates/gitignore',
-                
-         'config/db.yml' => <<<CONTENT
-server:
-  driver: pdo_mysql
-  host: localhost
-  port: 3306
-  database: $this->database
-  user: $this->databaseUser
-  password: $this->databasePassword
-
-CONTENT
-,
-                
-        'web/index.php' => <<<CONTENT
-<?php
-
-require __DIR__ . '/../vendor/autoload.php';
-
-\$config = new Firenote\\Configuration\\Yaml(__DIR__ . '/../config');
-\$app = new $this->namespace\\Application(\$config, __DIR__ . '/..');
-
-\$app->enableDebug()->enableProfiling();
-
-\$app->mountProviders();
-\$app->initializeAdminLayout();
-                
-\$app->run();
-CONTENT
-,
-
-        'src/' . $this->namespace . '/Application.php' => <<<CONTENT
-<?php
-                
-namespace $this->namespace;
-
-use Firenote\\Layout\\Menu as Menu;
-                
-class Application extends \\Firenote\\Application
-{
-    protected function initializeApplicationServices()
-    {
-    }
-    
-    protected function configureAdminLayout(\\Firenote\\AdminLayout \$layout)
-    {
-        /*
-        \$layout
-            ->addMenu(new Menu\Link('Dashboard', '/admin/dashboard',    'dashboard'))
-            ->addMenu((new Menu\Root('Users', 'user'))
-                ->add(new Menu\Link('Create new user', '/admin/users/create'))
-                ->add(new Menu\Link('List users', '/admin/users/list'))
-            )
-            ->addShortcut('/admin/users/list', 'user')
-            ->addShortcut('/admin/users/list', 'comment')
-            ->addShortcut('/admin/users/list', 'wrench')
-            ->addShortcut('/admin/users/list', 'th-list')
-        ;
-        //*/
-    }
-                
-    public function mountProviders()
-    {
-        parent::mountProviders();
-        
-        \$this->mount('/', new Controllers\Home\Provider());
-    }
-}
-CONTENT
-,
-                
-            'src/' . $this->namespace . '/Controllers/Home/Provider.php' => <<<CONTENT
-<?php
-
-namespace $this->namespace\Controllers\Home;
-
-use Silex\Application;
-use Silex\ControllerProviderInterface;
-
-class Provider implements ControllerProviderInterface
-{
-    public function connect(Application \$app)
-    {
-        \$app['home.controller'] = \$app->share(function() use(\$app) {
-            return new Controller(\$app['db'], \$app['twig'], \$app['request'], \$app['layout'], \$app['security']->getToken());
-        });
-
-        // creates a new controller based on the default route
-        \$controllers = \$app['controllers_factory'];
-
-        \$controllers->get('/', 'home.controller:indexAction');
-        
-        return \$controllers;
-    }
-}
-CONTENT
-,
-                
-            'src/' . $this->namespace . '/Controllers/Home/Controller.php' => <<<CONTENT
-<?php
-
-namespace $this->namespace\Controllers\Home;
-
-use Symfony\Component\HttpFoundation\Response;
-
-class Controller extends \Firenote\Controllers\AbstractController
-{
-    public function indexAction()
-    {
-        return \$this->renderResponse('home.twig');
-    }
-}
-CONTENT
-,
-
-            'views/home.twig' => <<<CONTENT
-<h1>Firenote</h1>
-<a href="/admin">Back office</a>
-CONTENT
-                
+            '.gitignore' => 'gitignore',
+            'config/db.yml' => 'dbConfig',
+            'web/index.php' => 'index',
+            'src/' . $this->namespace . '/Application.php' => 'Application',
+            'src/' . $this->namespace . '/Controllers/Home/Provider.php' => 'HomeProvider',
+            'src/' . $this->namespace . '/Controllers/Home/Controller.php' => 'HomeController',
+            'views/home.twig' => 'home.twig'
         );
                 
         $this->step('Creating files');
-        foreach($files as $file => $content)
+        foreach($files as $file => $templateFile)
         {
             $filePath = $this->workingDirectory . $file;
             if(! is_file($filePath))
             {
+                $templateFile = __DIR__ . '/templates/' . $templateFile . '.php';
+                $content = include($templateFile);
+                
                 $this->writeln("<info>Creating $filePath</info>");
                 file_put_contents($filePath, $content);
             }

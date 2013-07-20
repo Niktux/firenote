@@ -11,6 +11,7 @@ cache
 logs
 
 # Test files
+sandbox
 src/MyApp
 web/index.php
 config/db.yml
