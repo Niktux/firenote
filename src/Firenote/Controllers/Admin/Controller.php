@@ -10,4 +10,11 @@ class Controller extends \Firenote\Controllers\AbstractController
     {
         return $this->renderResponse('layout.twig', array());
     }
+    
+    public function usersAction()
+    {
+        return $this->renderResponse('layout.twig', array(
+            'users' => array(),
+        ));
+    }
 }

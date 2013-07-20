@@ -143,7 +143,7 @@
 								<img class="nav-user-photo" src="/assets/firenote/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Connected as</small>
-									Root
+									{{ user.username }}
 								</span>
 
 								<i class="icon-caret-down"></i>
@@ -161,7 +161,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="#"><i class="icon-off"></i>Logout</a>
+									<a href="{{ path('admin_logout') }}"><i class="icon-off"></i>Logout</a>
 								</li>
 							</ul>
 						</li>

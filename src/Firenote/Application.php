@@ -86,15 +86,15 @@ class Application extends \Silex\Application
         
         return array(
             'login' => array(
-                'pattern' => '^/login$',
+                'pattern' => '^/user/login$',
             ),
             'secured' => array(
                 'pattern' => '^/admin/',
                 'form' => array(
-                    'login_path' => '/login',
+                    'login_path' => '/user/login',
                     'check_path' => '/admin/login_check'
                 ),
-                'logout' => array('logout_path' => '/logout'),
+                'logout' => array('logout_path' => '/admin/logout'),
                 'remember_me' => array(),
                 'users' => $this->share(function() use($app){
                     return new UserProvider($app['db']);
@@ -120,7 +120,9 @@ class Application extends \Silex\Application
     
     protected function initializeFirenoteServices()
     {
-        $this['layout'] = $this->share(function () {
+        $app = $this;
+        
+        $this['layout'] = $this->share(function (){
             return new AdminLayout();
         });
     }
@@ -155,7 +157,8 @@ class Application extends \Silex\Application
     
     public function mountProviders()
     {
-        $this->mount('/', new Controllers\Admin\Provider());
+        $this->mount('/admin', new Controllers\Admin\Provider());
+        $this->mount('/user', new Controllers\User\Provider());
     }
     
     public function initializeAdminLayout()

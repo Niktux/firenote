@@ -8,6 +8,7 @@ class AdminLayout
         MAX_SHORTCUTS = 4;
     
     private
+        $user,
         $shortcutStyles,
         $shortcuts,
         $menus;
@@ -17,6 +18,7 @@ class AdminLayout
         $this->shortcutStyles = array('success', 'info', 'warning', 'danger');
         $this->shortcuts = array();
         $this->menus = array();
+        $this->user = null;
     }
     
     public function getVariables()
@@ -24,6 +26,7 @@ class AdminLayout
         return array(
             'menus' => $this->menus,
             'shortcuts' => $this->shortcuts,
+            'user' => $this->user,
         );
     }
     
@@ -53,5 +56,12 @@ class AdminLayout
     public function getShortcuts()
     {
         return iterator_to_array(new \LimitIterator(new \ArrayIterator($this->shortcuts), self::MAX_SHORTCUTS));
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
+        
+        return $this;
     }
 }
