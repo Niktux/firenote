@@ -14,7 +14,9 @@ class ApplicationInit extends Command
         $workingDirectory,
         $appName,
         $namespace,
-        $database;
+        $database,
+        $databaseUser,
+        $databasePassword;
     
     protected function configure()
     {
@@ -37,6 +39,7 @@ class ApplicationInit extends Command
             return;
         }
         
+        $this->collectDatabaseAccess();
         $this->createDirectories();
         $this->createFiles();
         $this->installAssets();
@@ -55,6 +58,14 @@ class ApplicationInit extends Command
         $reply = $this->confirm("Do you want to continue (files will be created into working directory) ?");
         
         return $reply;
+    }
+    
+    private function collectDatabaseAccess()
+    {
+        $this->step('Collect database access');
+    
+        $this->databaseUser = $this->ask('User : ', 'root');
+        $this->databasePassword = $this->ask('Password : ', '');
     }
     
     private function setAppNameVariations()
@@ -136,8 +147,8 @@ server:
   host: localhost
   port: 3306
   database: $this->database
-  user:
-  password:
+  user: $this->databaseUser
+  password: $this->databasePassword
 
 CONTENT
 ,

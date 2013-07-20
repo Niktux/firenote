@@ -84,6 +84,14 @@ ASCII;
         
         return $reply;
     }
+
+    protected function askPassword($question, $defaultValue)
+    {
+        $reply = $this->dialog->askHiddenResponse($this->output, "\n<question>$question</question> ", $defaultValue);
+        $this->writeln('');
+    
+        return $reply;
+    }
     
     protected function confirm($question, $defaultValue = false)
     {
