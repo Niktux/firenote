@@ -16,7 +16,9 @@
 			
 			<div class="main-content">
 
-			{% include 'parts/breadcrumb.twig' %}
+			{% block breadcrumb %}
+			    {% include 'parts/breadcrumb.twig' %}
+            {% endblock %}
 
 				<div class="page-content">
 				    {% block contentHeader %}

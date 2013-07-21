@@ -8,6 +8,6 @@ class Controller extends \Firenote\Controllers\AbstractController
 {
     public function indexAction()
     {
-        return $this->renderResponse('layouts/admin.twig', array());
+        return $this->renderResponse('home', 'pages/homepage.twig', array());
     }
 }

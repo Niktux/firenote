@@ -98,7 +98,7 @@ class Application extends \Silex\Application
         });
         
         $userProviderClosure = function() use($app){
-            return new UserProvider($app['db']);
+            return new User\UserProvider($app['db']);
         };
         $this['user.provider'] = $this->share($userProviderClosure);
         $this['user.provider.closure'] = $this->protect($userProviderClosure);
@@ -120,7 +120,7 @@ class Application extends \Silex\Application
         );
     }
     
-    private function getAccessRules()
+    protected function getAccessRules()
     {
         return array(
             array('^/admin/', 'ROLE_ADMIN'),

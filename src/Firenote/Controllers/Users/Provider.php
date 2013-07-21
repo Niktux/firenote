@@ -18,6 +18,8 @@ class Provider implements ControllerProviderInterface
 
         $controllers->get('/create', 'users.controller:createAction');
         $controllers->get('/list', 'users.controller:usersAction');
+        $controllers->get('/{username}/profile', 'users.controller:profileAction')
+                    ->assert('username', '\w+');
         
         return $controllers;
     }

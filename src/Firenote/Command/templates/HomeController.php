@@ -11,7 +11,7 @@ class Controller extends \Firenote\Controllers\AbstractController
 {
     public function indexAction()
     {
-        return \$this->renderResponse('home.twig');
+        return \$this->renderResponse('Home page', 'home.twig');
     }
 }
 CONTENT

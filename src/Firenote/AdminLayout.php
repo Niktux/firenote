@@ -9,10 +9,12 @@ class AdminLayout
     
     private
         $user,
+        $breadcrumbs,
         $shortcutStyles,
         $shortcuts,
         $menus,
-        $appName;
+        $appName,
+        $pageLabel;
     
     public function __construct($appName = 'Firenote')
     {
@@ -21,6 +23,9 @@ class AdminLayout
         $this->menus = array();
         $this->user = null;
         $this->appName = $appName;
+        $this->breadcrumbs = array();
+        $this->addBreadcrumb('Admin', '/admin');
+        $this->pageLabel = '';
     }
     
     public function getVariables()
@@ -30,6 +35,8 @@ class AdminLayout
             'menus' => $this->menus,
             'shortcuts' => $this->shortcuts,
             'user' => $this->user,
+            'breadcrumbs' => $this->breadcrumbs,
+            'pageLabel' => $this->pageLabel,
         );
     }
     
@@ -71,6 +78,23 @@ class AdminLayout
     public function setAppName($appName)
     {
         $this->appName = $appName;
+        
+        return $this;
+    }
+    
+    public function addBreadcrumb($label, $path)
+    {
+        $this->breadcrumbs[] = array(
+            'label' => $label,
+            'path' => $path,
+        );
+        
+        return $this;
+    }
+
+    public function setPageLabel($pageLabel)
+    {
+        $this->pageLabel = $pageLabel;
         
         return $this;
     }

@@ -1,8 +1,7 @@
 <?php
 
-namespace Firenote;
+namespace Firenote\User;
 
-use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -21,8 +20,9 @@ class UserProvider implements UserProviderInterface
     
     public function loadUserByUsername($username)
     {
+        
         $stmt = $this->db->executeQuery(
-            'SELECT * FROM comptes WHERE login = ?',
+            'SELECT * FROM users WHERE username = ?',
             array(strtolower($username))
         );
     
@@ -30,38 +30,37 @@ class UserProvider implements UserProviderInterface
         {
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
         }
-    
-        return new User($user['login'], $user['encpass'], explode(',', $user['roles']), true, true, true, true);
+        
+        return new UserInfo(
+            new User($user['username'], $user['password'], explode(',', $user['roles']), true, true, true, true),
+            $user['avatar'], null, 0
+        );
     }
     
     public function refreshUser(UserInterface $user)
     {
-        if (!$user instanceof User)
-        {
-            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
-        }
-    
         return $this->loadUserByUsername($user->getUsername());
     }
     
     public function supportsClass($class)
     {
-        return $class === 'Symfony\Component\Security\Core\User\User';
+        return (
+           $class === 'Symfony\Component\Security\Core\User\User'
+        || $class === 'Firenote\User\UserInfo' );
     }
     
     public function listAll()
     {
-        $stmt = $this->db->executeQuery('SELECT * FROM comptes');
+        $stmt = $this->db->executeQuery('SELECT * FROM users');
     
         $users = array();
         while($user = $stmt->fetch())
         {
             $users[] = new User(
-                $user['login'], $user['encpass'], explode(',', $user['roles']), true, true, true, true
+                $user['username'], $user['password'], explode(',', $user['roles']), true, true, true, true
             );
         }
         
         return $users;
-    
     }
 }

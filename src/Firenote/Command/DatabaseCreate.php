@@ -41,6 +41,7 @@ class DatabaseCreate extends Command
             $users->addUniqueIndex(array('username'));
             $users->addColumn('password', 'string', array('length' => 255));
             $users->addColumn('roles', 'string', array('length' => 255));
+            $users->addColumn('avatar', 'string', array('length' => 512));
         
             $schema->createTable($users);
         
@@ -48,13 +49,15 @@ class DatabaseCreate extends Command
             $app['db']->insert('users', array(
                     'username' => 'fabien',
                     'password' => '5FZ2Z8QIkA7UTZ4BYkoC+GsReLf569mSKDsfods6LYQ8t+a8EW9oaircfMpmaLbPBh4FOBiiFyLfuZmTSUwzZg==',
-                    'roles' => 'ROLE_USER'
+                    'roles' => 'ROLE_USER',
+                    'avatar' => '/assets/firenote/avatars/avatar2.png',
             ));
         
             $app['db']->insert('users', array(
                     'username' => 'admin',
                     'password' => '5FZ2Z8QIkA7UTZ4BYkoC+GsReLf569mSKDsfods6LYQ8t+a8EW9oaircfMpmaLbPBh4FOBiiFyLfuZmTSUwzZg==',
-                    'roles' => 'ROLE_ADMIN'
+                    'roles' => 'ROLE_ADMIN',
+                    'avatar' => '/assets/firenote/avatars/avatar2.png',
             ));
 
         }
