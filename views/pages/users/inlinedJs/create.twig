@@ -8,6 +8,7 @@
 				if(!$('#validation-form').valid()) return false;
 			}
 		}).on('finished', function(e) {
+			if(!$('#validation-form').valid()) return false;
 			$('#validation-form').submit();
 		}).on('stepclick', function(e){
 			//return false;//prevent clicking on steps
@@ -70,15 +71,13 @@
 				else error.insertAfter(element);
 			},
 	
-			submitHandler: function (form) {
-			},
 			invalidHandler: function (form) {
 			}
 		});
 
 
 		
-		$('#id-input-file-3').ace_file_input({
+		$('#avatar').ace_file_input({
 			style:'well',
 			btn_choose:'Drop files here or click to choose',
 			btn_change:null,

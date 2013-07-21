@@ -17,6 +17,7 @@ class Provider implements ControllerProviderInterface
         $controllers = $app['controllers_factory'];
 
         $controllers->get('/create', 'users.controller:createAction');
+        $controllers->post('/register', 'users.controller:registerAction');
         $controllers->get('/list', 'users.controller:usersAction');
         $controllers->get('/{username}/profile', 'users.controller:profileAction')
                     ->assert('username', '\w+');

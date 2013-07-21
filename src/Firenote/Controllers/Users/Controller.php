@@ -33,6 +33,13 @@ class Controller extends \Firenote\Controllers\AbstractController
         ));
     }
     
+    public function registerAction()
+    {
+        return $this->renderResponse('Register', 'pages/post.twig', array(
+            'vars' => $_POST
+        ));
+    }
+    
     public function profileAction($username)
     {
         return $this->renderResponse('View', 'pages/users/profile.twig', array(
