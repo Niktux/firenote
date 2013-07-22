@@ -2,7 +2,7 @@
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 				{% block shortcuts %}
 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-					    {% for shortcut in shortcuts %}
+					    {% for shortcut in page.shortcuts %}
 						<a href="{{ shortcut.link }}" class="btn btn-small btn-{{ shortcut.style }}">
 							<i class="{{ shortcut.icon }}"></i>
 						</a>
@@ -20,7 +20,7 @@
 
 				<ul class="nav nav-list">
 				
-			    {% for menu in menus %}
+			    {% for menu in page.menus %}
 					<li>
 				    {% if menu.hasSubmenus %}
 						<a href="#" class="dropdown-toggle">

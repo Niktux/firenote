@@ -5,7 +5,7 @@
 					<a href="/admin" class="brand">
 						<small>
 							<i class="icon-fire red"></i>
-							{{ appName }}
+							{{ page.appName }}
 						</small>
 					</a><!--/.brand-->
 
@@ -117,7 +117,7 @@
 								<img class="nav-user-photo" src="/assets/firenote/avatars/avatar2.png" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Connected as</small>
-									{{ user.username }}
+									{{ page.user.username }}
 								</span>
 
 								<i class="icon-caret-down"></i>
@@ -129,7 +129,7 @@
 								</li>
 
 								<li>
-									<a href="/admin/users/{{ user.username }}/profile"><i class="icon-user"></i>Profile</a>
+									<a href="/admin/users/{{ page.user.username }}/profile"><i class="icon-user"></i>Profile</a>
 								</li>
 
 								<li class="divider"></li>
