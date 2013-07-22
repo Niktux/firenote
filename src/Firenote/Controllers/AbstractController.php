@@ -3,6 +3,7 @@
 namespace Firenote\Controllers;
 
 use Firenote\Pages\AdminPage;
+use Symfony\Component\HttpFoundation\Request;
 
 abstract class AbstractController implements \Firenote\Controller
 {
@@ -17,7 +18,7 @@ abstract class AbstractController implements \Firenote\Controller
         return $this;
     }
 
-    public function setRequest($request)
+    public function setRequest(Request $request)
     {
         $this->request = $request;
         

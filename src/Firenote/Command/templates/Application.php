@@ -17,15 +17,15 @@ class Application extends \\Firenote\\Application
     {
         /*
         \$layout
-            ->addMenu(new Menu\Link('Dashboard', '/admin/dashboard',    'dashboard'))
+            ->addMenu(new Menu\Link('Dashboard', 'admin_dashboard',    'dashboard'))
             ->addMenu((new Menu\Root('Users', 'user'))
-                ->add(new Menu\Link('Create new user', '/admin/users/create'))
-                ->add(new Menu\Link('List users', '/admin/users/list'))
+                ->add(new Menu\Link('Create new user', 'users_create'))
+                ->add(new Menu\Link('List users', 'users_list'))
             )
-            ->addShortcut('/admin/users/list', 'user')
-            ->addShortcut('/admin/users/list', 'comment')
-            ->addShortcut('/admin/users/list', 'wrench')
-            ->addShortcut('/admin/users/list', 'th-list')
+            ->addShortcut('users_list', 'user')
+            ->addShortcut('users_list', 'comment')
+            ->addShortcut('users_list', 'wrench')
+            ->addShortcut('users_list', 'th-list')
         ;
         //*/
     }

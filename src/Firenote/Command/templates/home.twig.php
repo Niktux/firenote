@@ -7,7 +7,7 @@ return <<<CONTENT
 <div id="login-box" class="login-box visible widget-box no-border">
     <div class="widget-body">
 	    <div class="widget-main">
-	        <a href="/admin" class="btn btn-danger btn-medium">
+	        <a href="{{ path('admin_home') }}" class="btn btn-danger btn-medium">
 	            <i class="icon-desktop"></i>
 	            Back office
 	        </a>

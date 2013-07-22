@@ -16,7 +16,7 @@ class Provider implements ControllerProviderInterface
         // creates a new controller based on the default route
         $controllers = $app['controllers_factory'];
 
-        $controllers->get('/login', 'login.controller:loginAction');
+        $controllers->get('/login', 'login.controller:loginAction')->bind('login');
         
         return $controllers;
     }

@@ -2,7 +2,7 @@
 			<div class="navbar-inner">
 			{% block navBar %}
 				<div class="container-fluid">
-					<a href="/admin" class="brand">
+					<a href="{{ path('admin_home') }}" class="brand">
 						<small>
 							<i class="icon-fire red"></i>
 							{{ page.appName }}
@@ -129,7 +129,7 @@
 								</li>
 
 								<li>
-									<a href="/admin/users/{{ page.user.username }}/profile"><i class="icon-user"></i>Profile</a>
+									<a href="{{ path('users_profile', {username: page.user.username}) }}"><i class="icon-user"></i>Profile</a>
 								</li>
 
 								<li class="divider"></li>

@@ -16,10 +16,10 @@ class Provider implements ControllerProviderInterface
         // creates a new controller based on the default route
         $controllers = $app['controllers_factory'];
 
-        $controllers->get('/create', 'users.controller:createAction');
-        $controllers->post('/register', 'users.controller:registerAction');
-        $controllers->get('/list', 'users.controller:usersAction');
-        $controllers->get('/{username}/profile', 'users.controller:profileAction')
+        $controllers->get('/create', 'users.controller:createAction')->bind('users_create');
+        $controllers->post('/register', 'users.controller:registerAction')->bind('users_register');
+        $controllers->get('/list', 'users.controller:usersAction')->bind('users_list');
+        $controllers->get('/{username}/profile', 'users.controller:profileAction')->bind('users_profile')
                     ->assert('username', '\w+');
         
         return $controllers;

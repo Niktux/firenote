@@ -16,7 +16,8 @@ class Provider implements ControllerProviderInterface
         // creates a new controller based on the default route
         $controllers = $app['controllers_factory'];
 
-        $controllers->get('/', 'admin.controller:indexAction');
+        $controllers->get('/', 'admin.controller:indexAction')->bind('admin_home');
+        $controllers->get('/dashboard', 'admin.controller:indexAction')->bind('admin_dashboard');
         
         return $controllers;
     }

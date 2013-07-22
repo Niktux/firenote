@@ -16,7 +16,7 @@ class Controller extends \Firenote\Controllers\AbstractController
     
     public function onInitialize()
     {
-        $this->page->addBreadcrumb('Users', '/admin/users/list');
+        $this->page->addBreadcrumb('Users', 'users_list');
     }
     
     public function usersAction()

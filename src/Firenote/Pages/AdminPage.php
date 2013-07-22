@@ -16,7 +16,7 @@ class AdminPage extends HtmlPage
         parent::__construct($twig);
         
         $this->breadcrumbs = array();
-        $this->addBreadcrumb('Admin', '/admin');
+        $this->addBreadcrumb('Admin', 'admin_home');
         
         $this->title = 'Blank page';
         $this->layout = $layout;

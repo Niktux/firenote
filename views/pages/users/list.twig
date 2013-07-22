@@ -43,7 +43,7 @@
 					</label>
 				</td>
 
-				<td><a href="/admin/users/{{ user.username }}/profile">{{ user.username }}</a></td>
+				<td><a href="{{ path('users_profile', {username: user.username}) }}">{{ user.username }}</a></td>
 				<td>{{ user.password }}</td>
 
 				<td class="hidden-480">
@@ -111,7 +111,7 @@
 	</table>
 	
 	<div class="form-actions">
-	    <a href="/admin/users/create" class="btn btn-info">
+	    <a href="{{ path('users_create') }}" class="btn btn-info">
 	        <i class="icon-plus">
 	            Add a new user
 	        </i>
