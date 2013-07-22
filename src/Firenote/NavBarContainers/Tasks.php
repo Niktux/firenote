@@ -12,7 +12,7 @@ class Tasks implements \Firenote\NavBarContainer
         $this->tasks = $tasks;
     }
     
-    public function addTask($task)
+    public function addTask(Tasks\Task $task)
     {
         $this->tasks[] = $task;
         
