@@ -2,30 +2,19 @@
 
 namespace Firenote\Controllers;
 
+use Firenote\Pages\AdminPage;
+
 abstract class AbstractController
 {
     protected
         $api,
-        $request,
-        $layout;
+        $page,
+        $request;
     
-    public function __construct(\Firenote\ControllerAPI $api, $pagegroupName = null, $pagegroupPath = null)
+    public function __construct(\Firenote\ControllerAPI $api, AdminPage $page)
     {
         $this->api = $api;
-        
+        $this->page = $page;
         $this->request = $this->api->getRequest();
-        $this->layout = $this->api->getLayout();
-        
-        if($pagegroupName !== null)
-        {
-            $this->layout->addBreadcrumb($pagegroupName, $pagegroupPath);
-        }
-    }
-    
-    protected function renderResponse($pageLabel, $template, $variables = array())
-    {
-        $this->layout->setPageLabel($pageLabel);
-        
-        return $this->api->renderResponse($template, $variables);
     }
 }

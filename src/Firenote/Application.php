@@ -17,6 +17,7 @@ use Silex\Provider\DoctrineServiceProvider;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Yaml\Yaml;
+use Firenote\Pages\AdminPage;
 
 class Application extends \Silex\Application
 {
@@ -152,6 +153,10 @@ class Application extends \Silex\Application
         $this['controllerApi'] = $this->share(function () use ($app){
             return new ControllerAPI($app);
         });
+        
+        $this['page'] = function() use($app){
+            return new AdminPage($app['twig'], $app['layout']);
+        };
         
     }
     
