@@ -53,7 +53,10 @@ class ApplicationInit extends Command
         $this->setAppNameVariations();
         
         $this->setRootDirectory($this->input->getArgument('workingDir'));
-        $this->writeln("<comment>Working into $this->workingDirectory</comment>");
+        $this->writeln(sprintf(
+            "<comment>Working into %s </comment>",
+            rtrim($this->workingDirectory, DIRECTORY_SEPARATOR)
+        ));
         
         $reply = $this->confirm("Do you want to continue (files will be created into working directory) ?");
         
