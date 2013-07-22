@@ -12,6 +12,7 @@ class AdminLayout
         $shortcutStyles,
         $shortcuts,
         $menus,
+        $containers,
         $appName;
     
     public function __construct($appName = 'Firenote')
@@ -19,6 +20,8 @@ class AdminLayout
         $this->shortcutStyles = array('success', 'info', 'warning', 'danger');
         $this->shortcuts = array();
         $this->menus = array();
+        
+        $this->containers = array();
         $this->user = null;
         $this->appName = $appName;
     }
@@ -29,6 +32,7 @@ class AdminLayout
             'appName' => $this->appName,
             'menus' => $this->menus,
             'shortcuts' => $this->shortcuts,
+            'containers' => $this->containers,
             'user' => $this->user,
         );
     }
@@ -36,6 +40,13 @@ class AdminLayout
     public function addMenu(Layout\Menu $menu)
     {
         $this->menus[] = $menu;
+        
+        return $this;
+    }
+    
+    public function addContainer(NavBarContainer $container)
+    {
+        $this->containers[] = $container;
         
         return $this;
     }
@@ -59,6 +70,11 @@ class AdminLayout
     public function getShortcuts()
     {
         return iterator_to_array(new \LimitIterator(new \ArrayIterator($this->shortcuts), self::MAX_SHORTCUTS));
+    }
+    
+    public function getUser()
+    {
+        return $this->user;
     }
 
     public function setUser($user)

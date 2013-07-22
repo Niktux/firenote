@@ -1,0 +1,35 @@
+<li class="grey">
+	<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+		<i class="icon-tasks"></i>
+		<span class="badge badge-grey">{{ container.tasks|length }}</span>
+	</a>
+
+	<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-closer">
+		<li class="nav-header">
+			<i class="icon-ok"></i>
+			{{ container.tasks|length }} Task{% if container.tasks|length > 1 %}s{% endif %} to complete
+		</li>
+
+		{% for task in container.tasks %}
+		<li>
+			<a href="{% if task.link is not empty %}{{ path(task.link) }}{% else %}#{% endif %}">
+				<div class="clearfix">
+					<span class="pull-left">{{ task.title }}</span>
+					<span class="pull-right">{{ task.percent }}%</span>
+				</div>
+
+				<div class="progress progress-mini progress-{{ task.type }}{% if task.active %} progress-striped active{% endif %}">
+					<div style="width:{{ task.percent }}%" class="bar"></div>
+				</div>
+			</a>
+		</li>
+		{% endfor %}
+
+		<li>
+			<a href="#">
+				See tasks with details
+				<i class="icon-arrow-right"></i>
+			</a>
+		</li>
+	</ul>
+</li>

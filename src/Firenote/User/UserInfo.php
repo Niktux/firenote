@@ -11,7 +11,7 @@ class UserInfo extends UserDelegate implements UserInfoInterface
         $lastLogin,
         $connectionCount;
     
-    public function __construct(UserInterface $user, $avatar, $lastLogin, $connectionCount)
+    public function __construct(UserInterface $user, $avatar, $lastLogin = null, $connectionCount = null)
     {
         parent::__construct($user);
         
