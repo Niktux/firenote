@@ -4,17 +4,27 @@ namespace Firenote\Controllers;
 
 use Firenote\Pages\AdminPage;
 
-abstract class AbstractController
+abstract class AbstractController implements \Firenote\Controller
 {
     protected
-        $api,
         $page,
         $request;
     
-    public function __construct(\Firenote\ControllerAPI $api, AdminPage $page)
+    public function setPage(AdminPage $page)
     {
-        $this->api = $api;
         $this->page = $page;
-        $this->request = $this->api->getRequest();
+        
+        return $this;
+    }
+
+    public function setRequest($request)
+    {
+        $this->request = $request;
+        
+        return $this;
+    }
+    
+    public function onInitialize()
+    {
     }
 }

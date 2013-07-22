@@ -9,11 +9,13 @@ class Controller extends \Firenote\Controllers\AbstractController
     private
         $userProvider;
     
-    public function __construct(\Firenote\ControllerAPI $api, \Firenote\User\UserProvider $userProvider)
+    public function __construct(\Firenote\User\UserProvider $userProvider)
     {
-        parent::__construct($api);
-        
         $this->userProvider = $userProvider;
+    }
+    
+    public function onInitialize()
+    {
         $this->page->addBreadcrumb('Users', '/admin/users/list');
     }
     

@@ -10,6 +10,6 @@ class Controller extends \Firenote\Controllers\AbstractController
     {
         return $this->page
             ->setPageLabel('Login')
-            ->render('pages/login.twig', array());
+            ->render('pages/login.twig');
     }
 }

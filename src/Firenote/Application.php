@@ -205,4 +205,20 @@ class Application extends \Silex\Application
     protected function configureAdminLayout(AdminLayout $layout)
     {
     }
+    
+    public function initializeController(Controller $controller)
+    {
+        $controller->setPage($this['page']);
+        $controller->setRequest($this['request']);
+        
+        $token = $this['security']->getToken();
+        if($token !== null)
+        {
+            $this['layout']->setUser($token->getUser());
+        }
+        
+        $controller->onInitialize();
+        
+        return $controller;
+    }
 }

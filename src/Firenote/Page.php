@@ -12,7 +12,8 @@ class Page
     
     public function __construct(\Twig_Environment $twig)
     {
-        $this->variables = $variables;
+        $this->variables = array();
+        $this->twig = $twig;
     }
     
     protected function getVariables()
@@ -27,9 +28,9 @@ class Page
         return $this;
     }
     
-    public function render($view, array $variables)
+    public function render($view, array $variables = array())
     {
-        $variables = array_merge($variables, $this->getVariables());
+        $variables['page'] = $this->getVariables();
     
         return new Response($this->twig->render(
             $view,

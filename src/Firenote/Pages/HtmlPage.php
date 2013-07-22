@@ -2,7 +2,7 @@
 
 namespace Firenote\Pages;
 
-class HtmlPage extends Firenote\Page
+class HtmlPage extends \Firenote\Page
 {
     private
         $stylesheets,

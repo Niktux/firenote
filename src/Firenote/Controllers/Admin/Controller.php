@@ -10,6 +10,6 @@ class Controller extends \Firenote\Controllers\AbstractController
     {
         return $this->page
             ->setPageLabel('home')
-            ->render('pages/homepage.twig', array());
+            ->render('pages/homepage.twig');
     }
 }

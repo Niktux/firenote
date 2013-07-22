@@ -24,12 +24,10 @@ class AdminPage extends HtmlPage
     
     protected function getVariables()
     {
-        $variables = array_merge(parent::getVariables(), $this->layout->getVariables());
-        
-        $variables['page'] = array(
+        return array_merge(parent::getVariables(), $this->layout->getVariables(), array(
             'breadcrumbs' => $this->breadcrumbs,
             'pageLabel' => $this->pageLabel,
-        );
+        ));
         
         return $variables;
     }
