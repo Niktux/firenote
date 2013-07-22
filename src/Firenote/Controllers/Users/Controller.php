@@ -22,7 +22,7 @@ class Controller extends \Firenote\Controllers\AbstractController
     public function usersAction()
     {
         return $this->page
-            ->setPageLabel('List')
+            ->setTitle('List')
             ->render('pages/users/list.twig', array(
                 'users' => $this->userProvider->listAll(),
         ));
@@ -31,7 +31,7 @@ class Controller extends \Firenote\Controllers\AbstractController
     public function createAction()
     {
         return $this->page
-            ->setPageLabel('Create')
+            ->setTitle('Create')
             ->render('pages/users/create.twig', array(
                 //FIXME
                 'roles' => array('ROLE_ADMIN', 'ROLE_EDITOR', 'ROLE_USER')
@@ -41,7 +41,7 @@ class Controller extends \Firenote\Controllers\AbstractController
     public function registerAction()
     {
         return $this->page
-            ->setPageLabel('Register')
+            ->setTitle('Register')
             ->render('pages/post.twig', array(
                 'vars' => $_POST
         ));
@@ -50,7 +50,7 @@ class Controller extends \Firenote\Controllers\AbstractController
     public function profileAction($username)
     {
         return $this->page
-            ->setPageLabel('View')
+            ->setTitle('View')
             ->render('pages/users/profile.twig', array(
                 'profile' => $this->userProvider->loadUserByUsername($username),
         ));

@@ -8,7 +8,7 @@ class AdminPage extends HtmlPage
 {
     private
         $breadcrumbs,
-        $pageLabel,
+        $title,
         $layout;
     
     public function __construct(\Twig_Environment $twig, AdminLayout $layout)
@@ -18,7 +18,7 @@ class AdminPage extends HtmlPage
         $this->breadcrumbs = array();
         $this->addBreadcrumb('Admin', '/admin');
         
-        $this->pageLabel = 'Blank page';
+        $this->title = 'Blank page';
         $this->layout = $layout;
     }
     
@@ -26,25 +26,25 @@ class AdminPage extends HtmlPage
     {
         return array_merge(parent::getVariables(), $this->layout->getVariables(), array(
             'breadcrumbs' => $this->breadcrumbs,
-            'pageLabel' => $this->pageLabel,
+            'title' => $this->title,
         ));
         
         return $variables;
     }
     
-    public function addBreadcrumb($label, $path)
+    public function addBreadcrumb($title, $path)
     {
         $this->breadcrumbs[] = array(
-            'label' => $label,
+            'title' => $title,
             'path' => $path,
         );
     
         return $this;
     }
 
-    public function setPageLabel($pageLabel)
+    public function setTitle($title)
     {
-        $this->pageLabel = $pageLabel;
+        $this->title = $title;
     
         return $this;
     }

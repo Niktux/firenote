@@ -9,7 +9,7 @@ class Controller extends \Firenote\Controllers\AbstractController
     public function indexAction()
     {
         return $this->page
-            ->setPageLabel('home')
+            ->setTitle('home')
             ->render('pages/homepage.twig');
     }
 }

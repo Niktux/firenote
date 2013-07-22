@@ -9,7 +9,7 @@ class Controller extends \Firenote\Controllers\AbstractController
     public function loginAction()
     {
         return $this->page
-            ->setPageLabel('Login')
+            ->setTitle('Login')
             ->render('pages/login.twig');
     }
 }
