@@ -7,17 +7,25 @@ Status : Development in progress - not stable
 
 
 1 - Setup
+---------
 
 A - Install with Composer (niktux/firenote)
+
 B - Initialize filetree :
+<code>
  php vendor/bin/fire app:init .
+</code> 
  
 C - Create database (manually at this time)
+
 D - Initialize database :
+<code>
  php vendor/bin/fire db:create
+</code>
 
 E - Vhost : 
 
+```
 <VirtualHost *:80>
 
     ServerName www.example.org
@@ -30,5 +38,12 @@ E - Vhost :
     RewriteRule (.*) /index.php [L]
 
 </VirtualHost>
+```
 
 F - Enjoy !
+
+
+2 - Developers documentation
+----------------------------
+
+TODO
