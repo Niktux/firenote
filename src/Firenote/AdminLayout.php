@@ -2,12 +2,15 @@
 
 namespace Firenote;
 
+use Symfony\Component\HttpFoundation\Session\Session;
+
 class AdminLayout
 {
     const
         MAX_SHORTCUTS = 4;
     
     private
+        $session,
         $user,
         $shortcutStyles,
         $shortcuts,
@@ -15,8 +18,10 @@ class AdminLayout
         $containers,
         $appName;
     
-    public function __construct($appName = 'Firenote')
+    public function __construct(Session $session, $appName = 'Firenote')
     {
+        $this->session = $session;
+        
         $this->shortcutStyles = array('success', 'info', 'warning', 'danger');
         $this->shortcuts = array();
         $this->menus = array();
@@ -34,6 +39,7 @@ class AdminLayout
             'shortcuts' => $this->shortcuts,
             'containers' => $this->containers,
             'user' => $this->user,
+            'flashes' => $this->session->getFlashBag()->all(),
         );
     }
     

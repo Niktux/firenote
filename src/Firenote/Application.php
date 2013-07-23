@@ -146,8 +146,8 @@ class Application extends \Silex\Application
     {
         $app = $this;
         
-        $this['layout'] = $this->share(function (){
-            return new AdminLayout();
+        $this['layout'] = $this->share(function () use($app){
+            return new AdminLayout($app['session']);
         });
         
         $this['page'] = function() use($app){
@@ -204,10 +204,11 @@ class Application extends \Silex\Application
     
     public function initializeController(Controller $controller)
     {
-        $controller->setPage($this['page']);
-        $controller->setRequest($this['request']);
-        $controller->setUrlGenerator($this['url_generator']);
-        $controller->setSession($this['session']);
+        $controller
+            ->setPage($this['page'])
+            ->setRequest($this['request'])
+            ->setUrlGenerator($this['url_generator'])
+            ->setSession($this['session']);
         
         $token = $this['security']->getToken();
         if($token !== null)

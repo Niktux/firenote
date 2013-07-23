@@ -21,8 +21,14 @@
             {% endblock %}
 
 				<div class="page-content">
+
 				    {% block contentHeader %}
 				    {% endblock %}
+				    
+				    {% block flashes %}
+				        {% include 'parts/flashes.twig' %}
+				    {% endblock %}
+				    
 					<div class="row-fluid">
 						<div class="span12">
 						{% block content %}
