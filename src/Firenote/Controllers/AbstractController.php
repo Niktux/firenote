@@ -6,6 +6,7 @@ use Firenote\Pages\AdminPage;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 abstract class AbstractController implements \Firenote\Controller
 {
@@ -14,7 +15,8 @@ abstract class AbstractController implements \Firenote\Controller
     
     protected
         $page,
-        $request;
+        $request,
+        $session;
     
     public function setPage(AdminPage $page)
     {
@@ -33,6 +35,13 @@ abstract class AbstractController implements \Firenote\Controller
     public function setUrlGenerator(UrlGeneratorInterface $urlGenerator)
     {
         $this->urlGenerator = $urlGenerator;
+        
+        return $this;
+    }
+
+    public function setSession(Session $session)
+    {
+        $this->session = $session;
         
         return $this;
     }
