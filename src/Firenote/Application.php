@@ -210,6 +210,7 @@ class Application extends \Silex\Application
     {
         $controller->setPage($this['page']);
         $controller->setRequest($this['request']);
+        $controller->setUrlGenerator($this['url_generator']);
         
         $token = $this['security']->getToken();
         if($token !== null)
