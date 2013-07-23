@@ -7,6 +7,7 @@ use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Doctrine\DBAL\Driver\Connection;
+use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 class UserProvider implements UserProviderInterface
 {
@@ -20,7 +21,6 @@ class UserProvider implements UserProviderInterface
     
     public function loadUserByUsername($username)
     {
-        
         $stmt = $this->db->executeQuery(
             'SELECT * FROM users WHERE username = ?',
             array(strtolower($username))
@@ -62,5 +62,23 @@ class UserProvider implements UserProviderInterface
         }
         
         return $users;
+    }
+    
+    public function register($username, $password, array $roles, $avatar)
+    {
+        $encoder = new MessageDigestPasswordEncoder();
+        
+        // FIXME use salt
+        $salt = null;
+        
+        $this->db->insert('users', array(
+            'username' => $username,
+            'password' => $encoder->encodePassword($password, $salt),
+            'roles'    => implode(',', $roles),
+            'avatar'   => $avatar,
+        ));
+        
+        // FIXME a little brutal ;-)
+        return $this->loadUserByUsername($username);
     }
 }
