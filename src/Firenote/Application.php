@@ -150,10 +150,6 @@ class Application extends \Silex\Application
             return new AdminLayout();
         });
         
-        $this['controllerApi'] = $this->share(function () use ($app){
-            return new ControllerAPI($app);
-        });
-        
         $this['page'] = function() use($app){
             return new AdminPage($app['twig'], $app['layout']);
         };
