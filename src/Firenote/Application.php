@@ -140,7 +140,7 @@ class Application extends \Silex\Application
         
         $this->register(new TwigServiceProvider(), array(
             'twig.path'    => $twigPath,
-            'twig.options' => array('cache' => $this['cache.path'] . 'twig'),
+            'twig.options' => array('cache' => $this['cache.path']),
         ));
     }
     
