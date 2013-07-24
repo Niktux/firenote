@@ -7,8 +7,9 @@ vendor
 .buildpath
 
 # Runtime files
-cache
-logs
+var/cache
+var/logs
+web/var
 
 # Test files
 sandbox

@@ -10,7 +10,7 @@ class Provider implements ControllerProviderInterface
     public function connect(Application $app)
     {
         $app['users.controller'] = $app->share(function() use($app) {
-            return $app->initializeController(new Controller($app['user.provider']));
+            return $app->initializeController(new Controller($app['user.provider'], $app['file_upload']));
         });
 
         // creates a new controller based on the default route

@@ -43,7 +43,7 @@
 
 	<hr />
 	<div class="step-content row-fluid position-relative" id="step-container">
-		<form class="form-horizontal" id="validation-form" method="post" action="{{ path('users_register') }}">
+		<form class="form-horizontal" id="validation-form" method="post" action="{{ path('users_register') }}"  enctype="multipart/form-data">
 			<div class="step-pane active" id="step1">
 				<h3 class="lighter block blue">Enter the following information</h3>
 
@@ -113,7 +113,8 @@
 
 			<div class="step-pane" id="step3">
 				<div class="center">
-                    <input multiple="" type="file" id="avatar" name="avatar"/>
+                    <input type="file" id="avatar" name="avatar"/>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="160000">
 				</div>
 			</div>
 		</form>

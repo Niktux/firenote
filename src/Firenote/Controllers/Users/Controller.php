@@ -6,15 +6,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Firenote\FileUploadHandler;
 
 class Controller extends \Firenote\Controllers\AbstractController
 {
     private
-        $userProvider;
+        $userProvider,
+        $upload;
     
-    public function __construct(\Firenote\User\UserProvider $userProvider)
+    public function __construct(\Firenote\User\UserProvider $userProvider, FileUploadHandler $upload)
     {
         $this->userProvider = $userProvider;
+        $this->upload = $upload;
     }
     
     public function onInitialize()
@@ -69,11 +72,14 @@ class Controller extends \Firenote\Controllers\AbstractController
             return null;
         }
         
+        $avatar = $this->upload->retrieve('avatar', array('png', 'jpg', 'jpeg', 'gif'));
+        $avatar = substr($avatar, strpos($avatar, '/var/'));
+        
         return $this->userProvider->register(
             $request->get('login'),
             $request->get('password'),
             array($request->get('roles')),
-            $request->get('avatar')
+            $avatar
         );
     }
     

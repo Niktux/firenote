@@ -32,8 +32,10 @@ class Application extends \Silex\Application
         
         $this->processRootDir($rootDir);
         
-        $this['logs.path']  = $this['rootDir.path'] . 'logs/';
-        $this['cache.path'] = $this['rootDir.path'] . 'cache/';
+        $this['var.path']   = $this['rootDir.path'] . 'var/';
+        $this['public_var.path']   = $this['rootDir.path'] . 'web/var/';
+        $this['logs.path']  = $this['var.path'] . 'logs/';
+        $this['cache.path'] = $this['var.path'] . 'cache/';
         
         $this->configuration = $configuration;
         
@@ -154,6 +156,11 @@ class Application extends \Silex\Application
             return new AdminPage($app['twig'], $app['layout']);
         };
         
+        $this['file_upload.path'] =  $this['public_var.path'] . 'upload/';
+        $this['file_upload.maxsize'] =  160000; // in bytes
+        $this['file_upload'] = function() use($app){
+            return new FileUploadHandler($app['file_upload.path'], $app['file_upload.maxsize']);
+        };
     }
     
     protected function initializeApplicationServices()
