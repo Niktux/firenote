@@ -1,221 +1,221 @@
 {% extends 'layouts/admin.twig' %}
 
 {% block contentHeader %}
-	<div class="page-header position-relative">
-		<h1>
-			User Profile Page
-		</h1>
-	</div><!--/.page-header-->
+    <div class="page-header position-relative">
+        <h1>
+            User Profile Page
+        </h1>
+    </div><!--/.page-header-->
 {% endblock %}
 
 {% block content %}
-				<div id="user-profile-1" class="user-profile row-fluid">
-					<div class="span3 center">
-						<div>
-						    <div class="space-12"></div>
-						    
-						    <span class="profile-picture">
-								<img id="avatar" alt="Alex's Avatar" src="{{ profile.avatar }}" />
-							</span>
-						    
-						    <div class="space-4"></div>
-							
-							<div class="width-80 label label-info label-large arrowed-in arrowed-in-right">
-								<div class="inline position-relative">
-									<a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
-										<span class="white middle bigger-120">{{ profile.username }}</span>
-									</a>
-								</div>
-							</div>
-						</div>
+                <div id="user-profile-1" class="user-profile row-fluid">
+                    <div class="span3 center">
+                        <div>
+                            <div class="space-12"></div>
+                            
+                            <span class="profile-picture">
+                                <img id="avatar" alt="Alex's Avatar" src="{{ profile.avatar }}" />
+                            </span>
+                            
+                            <div class="space-4"></div>
+                            
+                            <div class="width-80 label label-info label-large arrowed-in arrowed-in-right">
+                                <div class="inline position-relative">
+                                    <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+                                        <span class="white middle bigger-120">{{ profile.username }}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
-						<div class="space-6"></div>
-						<div class="hr hr12 dotted"></div>
+                        <div class="space-6"></div>
+                        <div class="hr hr12 dotted"></div>
 
-						<div class="clearfix">
-							<div class="grid2">
-								<span class="bigger-175 blue">25</span>
+                        <div class="clearfix">
+                            <div class="grid2">
+                                <span class="bigger-175 blue">25</span>
 
-								<br />
-								Connections
-							</div>
+                                <br />
+                                Connections
+                            </div>
 
-							<div class="grid2">
-								<span class="bigger-175 blue">05/07/2013</span>
+                            <div class="grid2">
+                                <span class="bigger-175 blue">05/07/2013</span>
 
-								<br />
-								Last seen
-							</div>
-						</div>
+                                <br />
+                                Last seen
+                            </div>
+                        </div>
 
-						<div class="hr hr16 dotted"></div>
-					</div>
+                        <div class="hr hr16 dotted"></div>
+                    </div>
 
-					<div class="span9">
+                    <div class="span9">
 
-						<div class="profile-user-info profile-user-info-striped">
-							<div class="profile-info-row">
-								<div class="profile-info-name"> Username </div>
+                        <div class="profile-user-info profile-user-info-striped">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Username </div>
 
-								<div class="profile-info-value">
-									<span id="username">{{ profile.username }}</span>
-								</div>
-							</div>
+                                <div class="profile-info-value">
+                                    <span id="username">{{ profile.username }}</span>
+                                </div>
+                            </div>
 
-							<div class="profile-info-row">
-								<div class="profile-info-name"> Password </div>
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Password </div>
 
-								<div class="profile-info-value">
-									<span>{{ profile.password }}</span>
-								</div>
-							</div>
+                                <div class="profile-info-value">
+                                    <span>{{ profile.password }}</span>
+                                </div>
+                            </div>
 
-							<div class="profile-info-row">
-								<div class="profile-info-name"> Joined </div>
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Joined </div>
 
-								<div class="profile-info-value">
-									<span id="signup">20/06/2010</span>
-								</div>
-							</div>
+                                <div class="profile-info-value">
+                                    <span id="signup">20/06/2010</span>
+                                </div>
+                            </div>
 
-							<div class="profile-info-row">
-								<div class="profile-info-name"> Last Online </div>
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Last Online </div>
 
-								<div class="profile-info-value">
-									<span id="login">{{ profile.lastLogin }}</span>
-								</div>
-							</div>
+                                <div class="profile-info-value">
+                                    <span id="login">{{ profile.lastLogin }}</span>
+                                </div>
+                            </div>
 
-							<div class="profile-info-row">
-								<div class="profile-info-name"> Roles </div>
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> Roles </div>
 
-								<div class="profile-info-value">
-									<span id="about">
-									{% for role in profile.roles %}
-									    {{ role }}<br>
-							        {% endfor %}
-									</span>
-								</div>
-							</div>
-						</div>
+                                <div class="profile-info-value">
+                                    <span id="about">
+                                    {% for role in profile.roles %}
+                                        {{ role }}<br>
+                                    {% endfor %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
 
-						<div class="space-20"></div>
+                        <div class="space-20"></div>
 
-						<div class="widget-box transparent">
-							<div class="widget-header widget-header-small">
-								<h4 class="blue smaller">
-									<i class="icon-rss orange"></i>
-									Recent Activities
-								</h4>
+                        <div class="widget-box transparent">
+                            <div class="widget-header widget-header-small">
+                                <h4 class="blue smaller">
+                                    <i class="icon-rss orange"></i>
+                                    Recent Activities
+                                </h4>
 
-								<div class="widget-toolbar action-buttons">
-									<a href="#" data-action="reload">
-										<i class="icon-refresh blue"></i>
-									</a>
-								</div>
-							</div>
+                                <div class="widget-toolbar action-buttons">
+                                    <a href="#" data-action="reload">
+                                        <i class="icon-refresh blue"></i>
+                                    </a>
+                                </div>
+                            </div>
 
-							<div class="widget-body">
-								<div class="widget-main padding-8">
-									<div id="profile-feed-1" class="profile-feed">
-										<div class="profile-activity clearfix">
-											<div>
-												<img class="pull-left" alt="Alex Doe's avatar" src="/assets/firenote/avatars/avatar5.png" />
-												<a class="user" href="#"> Alex Doe </a>
-												changed his profile photo.
-												<a href="#">Take a look</a>
+                            <div class="widget-body">
+                                <div class="widget-main padding-8">
+                                    <div id="profile-feed-1" class="profile-feed">
+                                        <div class="profile-activity clearfix">
+                                            <div>
+                                                <img class="pull-left" alt="Alex Doe's avatar" src="/assets/firenote/avatars/avatar5.png" />
+                                                <a class="user" href="#"> Alex Doe </a>
+                                                changed his profile photo.
+                                                <a href="#">Take a look</a>
 
-												<div class="time">
-													<i class="icon-time bigger-110"></i>
-													an hour ago
-												</div>
-											</div>
+                                                <div class="time">
+                                                    <i class="icon-time bigger-110"></i>
+                                                    an hour ago
+                                                </div>
+                                            </div>
 
-											<div class="tools action-buttons">
-												<a href="#" class="blue">
-													<i class="icon-pencil bigger-125"></i>
-												</a>
+                                            <div class="tools action-buttons">
+                                                <a href="#" class="blue">
+                                                    <i class="icon-pencil bigger-125"></i>
+                                                </a>
 
-												<a href="#" class="red">
-													<i class="icon-remove bigger-125"></i>
-												</a>
-											</div>
-										</div>
+                                                <a href="#" class="red">
+                                                    <i class="icon-remove bigger-125"></i>
+                                                </a>
+                                            </div>
+                                        </div>
 
-										<div class="profile-activity clearfix">
-											<div>
-												<img class="pull-left" alt="Susan Smith's avatar" src="/assets/firenote/avatars/avatar1.png" />
-												<a class="user" href="#"> Susan Smith </a>
+                                        <div class="profile-activity clearfix">
+                                            <div>
+                                                <img class="pull-left" alt="Susan Smith's avatar" src="/assets/firenote/avatars/avatar1.png" />
+                                                <a class="user" href="#"> Susan Smith </a>
 
-												is now friends with Alex Doe.
-												<div class="time">
-													<i class="icon-time bigger-110"></i>
-													2 hours ago
-												</div>
-											</div>
+                                                is now friends with Alex Doe.
+                                                <div class="time">
+                                                    <i class="icon-time bigger-110"></i>
+                                                    2 hours ago
+                                                </div>
+                                            </div>
 
-											<div class="tools action-buttons">
-												<a href="#" class="blue">
-													<i class="icon-pencil bigger-125"></i>
-												</a>
+                                            <div class="tools action-buttons">
+                                                <a href="#" class="blue">
+                                                    <i class="icon-pencil bigger-125"></i>
+                                                </a>
 
-												<a href="#" class="red">
-													<i class="icon-remove bigger-125"></i>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						
-						<div class="center">
-							<span class="btn btn-app btn-small btn-light no-hover">
-								<span class="bigger-150 blue"> 1,411 </span>
+                                                <a href="#" class="red">
+                                                    <i class="icon-remove bigger-125"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="center">
+                            <span class="btn btn-app btn-small btn-light no-hover">
+                                <span class="bigger-150 blue"> 1,411 </span>
 
-								<br />
-								<span class="smaller-90"> Views </span>
-							</span>
+                                <br />
+                                <span class="smaller-90"> Views </span>
+                            </span>
 
-							<span class="btn btn-app btn-small btn-yellow no-hover">
-								<span class="bigger-175"> 32 </span>
+                            <span class="btn btn-app btn-small btn-yellow no-hover">
+                                <span class="bigger-175"> 32 </span>
 
-								<br />
-								<span class="smaller-90"> Followers </span>
-							</span>
+                                <br />
+                                <span class="smaller-90"> Followers </span>
+                            </span>
 
-							<span class="btn btn-app btn-small btn-pink no-hover">
-								<span class="bigger-175"> 4 </span>
+                            <span class="btn btn-app btn-small btn-pink no-hover">
+                                <span class="bigger-175"> 4 </span>
 
-								<br />
-								<span class="smaller-90"> Projects </span>
-							</span>
+                                <br />
+                                <span class="smaller-90"> Projects </span>
+                            </span>
 
-							<span class="btn btn-app btn-small btn-grey no-hover">
-								<span class="bigger-175"> 23 </span>
+                            <span class="btn btn-app btn-small btn-grey no-hover">
+                                <span class="bigger-175"> 23 </span>
 
-								<br />
-								<span class="smaller-90"> Reviews </span>
-							</span>
+                                <br />
+                                <span class="smaller-90"> Reviews </span>
+                            </span>
 
-							<span class="btn btn-app btn-small btn-success no-hover">
-								<span class="bigger-175"> 7 </span>
+                            <span class="btn btn-app btn-small btn-success no-hover">
+                                <span class="bigger-175"> 7 </span>
 
-								<br />
-								<span class="smaller-90"> Albums </span>
-							</span>
+                                <br />
+                                <span class="smaller-90"> Albums </span>
+                            </span>
 
-							<span class="btn btn-app btn-small btn-primary no-hover">
-								<span class="bigger-175"> 55 </span>
+                            <span class="btn btn-app btn-small btn-primary no-hover">
+                                <span class="bigger-175"> 55 </span>
 
-								<br />
-								<span class="smaller-90"> Contacts </span>
-							</span>
-						</div>
+                                <br />
+                                <span class="smaller-90"> Contacts </span>
+                            </span>
+                        </div>
 
-						<div class="space-12"></div>
-						
-					</div>
-				</div>
+                        <div class="space-12"></div>
+                        
+                    </div>
+                </div>
 {% endblock %}

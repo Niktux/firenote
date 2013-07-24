@@ -1,77 +1,77 @@
-			<div class="sidebar" id="sidebar">
-				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-				{% block shortcuts %}
-					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-					    {% for shortcut in page.shortcuts %}
-						<a href="{{ path(shortcut.link) }}" class="btn btn-small btn-{{ shortcut.style }}">
-							<i class="{{ shortcut.icon }}"></i>
-						</a>
-						{% endfor %}
-					</div>
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                {% block shortcuts %}
+                    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                        {% for shortcut in page.shortcuts %}
+                        <a href="{{ path(shortcut.link) }}" class="btn btn-small btn-{{ shortcut.style }}">
+                            <i class="{{ shortcut.icon }}"></i>
+                        </a>
+                        {% endfor %}
+                    </div>
 
-					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-						<span class="btn btn-success"></span>
-						<span class="btn btn-info"></span>
-						<span class="btn btn-warning"></span>
-						<span class="btn btn-danger"></span>
-					</div>
-				{% endblock %}
-				</div><!--#sidebar-shortcuts-->
+                    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                        <span class="btn btn-success"></span>
+                        <span class="btn btn-info"></span>
+                        <span class="btn btn-warning"></span>
+                        <span class="btn btn-danger"></span>
+                    </div>
+                {% endblock %}
+                </div><!--#sidebar-shortcuts-->
 
-				<ul class="nav nav-list">
-				
-			    {% for menu in page.menus %}
-					<li>
-				    {% if menu.hasSubmenus %}
-						<a href="#" class="dropdown-toggle">
-				    {% else %}
-						<a href="{{ path(menu.link) }}">
-				    {% endif %}
-							<i class="{{ menu.icon }}"></i>
-							<span class="menu-text"> {{ menu.label }} </span>
-				        {% if menu.hasSubmenus %}<b class="arrow icon-angle-down"></b>{% endif %}
-						</a>
-						
-						{% if menu.hasSubmenus %}
-    						<ul class="submenu">
-						    {% for submenu in menu.submenus %}
-    							<li>
-    								<a href="{{ path(submenu.link) }}">
-    									<i class="icon-double-angle-right"></i>
-    									{{ submenu.label }}
-    								</a>
-    							</li>
-							{% endfor %}
-    						</ul>
-						{% endif %}
-						</li>
+                <ul class="nav nav-list">
+                
+                {% for menu in page.menus %}
+                    <li>
+                    {% if menu.hasSubmenus %}
+                        <a href="#" class="dropdown-toggle">
+                    {% else %}
+                        <a href="{{ path(menu.link) }}">
+                    {% endif %}
+                            <i class="{{ menu.icon }}"></i>
+                            <span class="menu-text"> {{ menu.label }} </span>
+                        {% if menu.hasSubmenus %}<b class="arrow icon-angle-down"></b>{% endif %}
+                        </a>
+                        
+                        {% if menu.hasSubmenus %}
+                            <ul class="submenu">
+                            {% for submenu in menu.submenus %}
+                                <li>
+                                    <a href="{{ path(submenu.link) }}">
+                                        <i class="icon-double-angle-right"></i>
+                                        {{ submenu.label }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                        </li>
                 {% endfor %}
                 
-					<!--
-					<li class="active open">
-						<a href="#" class="dropdown-toggle">
-							<i class="icon-file-alt"></i>
+                    <!--
+                    <li class="active open">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-file-alt"></i>
 
-							<span class="menu-text">
-								Other Pages
-							</span>
+                            <span class="menu-text">
+                                Other Pages
+                            </span>
 
-							<b class="arrow icon-angle-down"></b>
-						</a>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
 
-						<ul class="submenu">
-							<li class="active">
-								<a href="blank.html">
-									<i class="icon-double-angle-right"></i>
-									Blank Page
-								</a>
-							</li>
-						</ul>
-					</li>
-					-->
-				</ul><!--/.nav-list-->
+                        <ul class="submenu">
+                            <li class="active">
+                                <a href="blank.html">
+                                    <i class="icon-double-angle-right"></i>
+                                    Blank Page
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    -->
+                </ul><!--/.nav-list-->
 
-				<div class="sidebar-collapse" id="sidebar-collapse">
-					<i class="icon-double-angle-left"></i>
-				</div>
-			</div>
+                <div class="sidebar-collapse" id="sidebar-collapse">
+                    <i class="icon-double-angle-left"></i>
+                </div>
+            </div>

@@ -5,49 +5,49 @@
             {% include 'parts/page_head.twig' %}
         {% endblock %}
     </head>
-	<body>
-	    {% include 'parts/nav_bar.twig' %}
+    <body>
+        {% include 'parts/nav_bar.twig' %}
 
-	    <div class="main-container container-fluid">
-			<a class="menu-toggler" id="menu-toggler" href="#">
-				<span class="menu-text"></span>
-			</a>
-			{% include 'parts/sidebar.twig' %}
-			
-			<div class="main-content">
+        <div class="main-container container-fluid">
+            <a class="menu-toggler" id="menu-toggler" href="#">
+                <span class="menu-text"></span>
+            </a>
+            {% include 'parts/sidebar.twig' %}
+            
+            <div class="main-content">
 
-			{% block breadcrumb %}
-			    {% include 'parts/breadcrumb.twig' %}
+            {% block breadcrumb %}
+                {% include 'parts/breadcrumb.twig' %}
             {% endblock %}
 
-				<div class="page-content">
+                <div class="page-content">
 
-				    {% block contentHeader %}
-				    {% endblock %}
-				    
-				    {% block flashes %}
-				        {% include 'parts/flashes.twig' %}
-				    {% endblock %}
-				    
-					<div class="row-fluid">
-						<div class="span12">
-						{% block content %}
-						{% endblock %}
-						</div><!--/.span-->
-					</div><!--/.row-fluid-->
-				</div><!--/.page-content-->
-			</div><!--/.main-content-->
-		</div><!--/.main-container-->
+                    {% block contentHeader %}
+                    {% endblock %}
+                    
+                    {% block flashes %}
+                        {% include 'parts/flashes.twig' %}
+                    {% endblock %}
+                    
+                    <div class="row-fluid">
+                        <div class="span12">
+                        {% block content %}
+                        {% endblock %}
+                        </div><!--/.span-->
+                    </div><!--/.row-fluid-->
+                </div><!--/.page-content-->
+            </div><!--/.main-content-->
+        </div><!--/.main-container-->
 
-		{% block toTopButton %}
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
-			<i class="icon-double-angle-up icon-only bigger-110"></i>
-		</a>
-		{% endblock %}
+        {% block toTopButton %}
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+            <i class="icon-double-angle-up icon-only bigger-110"></i>
+        </a>
+        {% endblock %}
 
-		{% block footerScripts %}
+        {% block footerScripts %}
             {% include 'parts/footer_scripts.twig' %}
         {% endblock %}
         
-	</body>
+    </body>
 </html>

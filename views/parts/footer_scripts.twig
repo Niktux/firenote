@@ -1,32 +1,32 @@
-		<!--basic scripts-->
+        <!--basic scripts-->
 
-		<!--[if !IE]>-->
+        <!--[if !IE]>-->
 
-		<script type="text/javascript">
-			window.jQuery || document.write("<script src='/assets/firenote/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
-		</script>
+        <script type="text/javascript">
+            window.jQuery || document.write("<script src='/assets/firenote/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+        </script>
 
-		<!--<![endif]-->
+        <!--<![endif]-->
 
-		<!--[if IE]>
+        <!--[if IE]>
 <script type="text/javascript">
  window.jQuery || document.write("<script src='/assets/firenote/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
 
-		<script type="text/javascript">
-			if("ontouchend" in document) document.write("<script src='/assets/firenote/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-		</script>
-		<script src="/assets/firenote/js/bootstrap.min.js"></script>
-		
-		<!--page specific plugin scripts-->
-		{% block pageScripts %}
-		{% endblock %}
+        <script type="text/javascript">
+            if("ontouchend" in document) document.write("<script src='/assets/firenote/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+        </script>
+        <script src="/assets/firenote/js/bootstrap.min.js"></script>
+        
+        <!--page specific plugin scripts-->
+        {% block pageScripts %}
+        {% endblock %}
 
-		<!--ace scripts-->
-		<script src="/assets/firenote/js/ace-elements.min.js"></script>
-		<script src="/assets/firenote/js/ace.min.js"></script>
+        <!--ace scripts-->
+        <script src="/assets/firenote/js/ace-elements.min.js"></script>
+        <script src="/assets/firenote/js/ace.min.js"></script>
 
-		<!--inline scripts related to this page-->
-		{% block pageInlinedScripts %}
-		{% endblock %}
+        <!--inline scripts related to this page-->
+        {% block pageInlinedScripts %}
+        {% endblock %}

@@ -3,7 +3,7 @@
 {% block pageHead %}
     {% embed 'parts/page_head.twig' %}
         {% block pagePluginStyles %}
-		    <link rel="stylesheet" href="/assets/firenote/css/jquery-ui-1.10.3.custom.min.css" />
+            <link rel="stylesheet" href="/assets/firenote/css/jquery-ui-1.10.3.custom.min.css" />
         {% endblock %}
     {% endembed %}
 {% endblock %}
@@ -11,139 +11,139 @@
 {% block contentHeader %}
 <div class="page-header position-relative">
     <h1>
-    	Users
-    	<small>
-    		<i class="icon-double-angle-right"></i>
-    		create
-    	</small>
+        Users
+        <small>
+            <i class="icon-double-angle-right"></i>
+            create
+        </small>
     </h1>
 </div><!--/.page-header-->
 {% endblock %}
 
 {% block content %}
 <div class="row-fluid">
-	<div id="fuelux-wizard" class="row-fluid hide" data-target="#step-container">
-		<ul class="wizard-steps">
-			<li data-target="#step1" class="active">
-				<span class="step">1</span>
-				<span class="title">User information</span>
-			</li>
+    <div id="fuelux-wizard" class="row-fluid hide" data-target="#step-container">
+        <ul class="wizard-steps">
+            <li data-target="#step1" class="active">
+                <span class="step">1</span>
+                <span class="title">User information</span>
+            </li>
 
-			<li data-target="#step2">
-				<span class="step">2</span>
-				<span class="title">Roles</span>
-			</li>
+            <li data-target="#step2">
+                <span class="step">2</span>
+                <span class="title">Roles</span>
+            </li>
 
-			<li data-target="#step3">
-				<span class="step">3</span>
-				<span class="title">Images</span>
-			</li>
-		</ul>
-	</div>
+            <li data-target="#step3">
+                <span class="step">3</span>
+                <span class="title">Images</span>
+            </li>
+        </ul>
+    </div>
 
-	<hr />
-	<div class="step-content row-fluid position-relative" id="step-container">
-		<form class="form-horizontal" id="validation-form" method="post" action="{{ path('users_register') }}"  enctype="multipart/form-data">
-			<div class="step-pane active" id="step1">
-				<h3 class="lighter block blue">Enter the following information</h3>
+    <hr />
+    <div class="step-content row-fluid position-relative" id="step-container">
+        <form class="form-horizontal" id="validation-form" method="post" action="{{ path('users_register') }}"  enctype="multipart/form-data">
+            <div class="step-pane active" id="step1">
+                <h3 class="lighter block blue">Enter the following information</h3>
 
-					<div class="control-group">
-						<label class="control-label" for="login">Login</label>
+                    <div class="control-group">
+                        <label class="control-label" for="login">Login</label>
 
-						<div class="controls">
-							<div class="span12">
-								<input type="login" name="login" id="login" class="span6" />
-							</div>
-						</div>
-					</div>
+                        <div class="controls">
+                            <div class="span12">
+                                <input type="login" name="login" id="login" class="span6" />
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="control-group">
-						<label class="control-label" for="password">Password</label>
+                    <div class="control-group">
+                        <label class="control-label" for="password">Password</label>
 
-						<div class="controls">
-						    <div class="input-prepend span12">
-							    <span class="add-on">
-							        <i class="icon-key"></i>
-							    </span>
-								<input type="password" name="password" id="password" class="span4" />
-							</div>
-						</div>
-					</div>
+                        <div class="controls">
+                            <div class="input-prepend span12">
+                                <span class="add-on">
+                                    <i class="icon-key"></i>
+                                </span>
+                                <input type="password" name="password" id="password" class="span4" />
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="control-group">
-						<label class="control-label" for="password2">Confirm Password</label>
+                    <div class="control-group">
+                        <label class="control-label" for="password2">Confirm Password</label>
 
-						<div class="controls">
-							<div class="input-prepend span12">
-							    <span class="add-on">
-							        <i class="icon-key"></i>
-							    </span>
-								<input type="password" name="password2" id="password2" class="span4" />
-							</div>
-						</div>
-					</div>
+                        <div class="controls">
+                            <div class="input-prepend span12">
+                                <span class="add-on">
+                                    <i class="icon-key"></i>
+                                </span>
+                                <input type="password" name="password2" id="password2" class="span4" />
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="hr hr-dotted"></div>
+                    <div class="hr hr-dotted"></div>
 
-					<div class="control-group">
-						<label class="control-label" for="name">Display Name</label>
+                    <div class="control-group">
+                        <label class="control-label" for="name">Display Name</label>
 
-						<div class="controls">
-							<span class="span12">
-								<input class="span6" type="text" id="name" name="name" />
-							</span>
-						</div>
-					</div>
-					
-			</div>
+                        <div class="controls">
+                            <span class="span12">
+                                <input class="span6" type="text" id="name" name="name" />
+                            </span>
+                        </div>
+                    </div>
+                    
+            </div>
 
-			<div class="step-pane" id="step2">
-				<div class="row-fluid">
-				
-					<label for="form-field-select-4">Roles</label>
-					
-					<select multiple="multiple" id="form-field-select-4" name="roles">
-						<option value=""></option>
-					{% for role in roles %}
-					    <option value="{{ role }}">{{ role }}</option>
-				    {% endfor %}
-					</select>
-				</div>
-			</div>
+            <div class="step-pane" id="step2">
+                <div class="row-fluid">
+                
+                    <label for="form-field-select-4">Roles</label>
+                    
+                    <select multiple="multiple" id="form-field-select-4" name="roles">
+                        <option value=""></option>
+                    {% for role in roles %}
+                        <option value="{{ role }}">{{ role }}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+            </div>
 
-			<div class="step-pane" id="step3">
-				<div class="center">
+            <div class="step-pane" id="step3">
+                <div class="center">
                     <input type="file" id="avatar" name="avatar"/>
                     <input type="hidden" name="MAX_FILE_SIZE" value="160000">
-				</div>
-			</div>
-		</form>
-	</div>
+                </div>
+            </div>
+        </form>
+    </div>
 
-	<div class="row-fluid wizard-actions">
-		<button class="btn btn-prev">
-			<i class="icon-arrow-left"></i>
-			Prev
-		</button>
+    <div class="row-fluid wizard-actions">
+        <button class="btn btn-prev">
+            <i class="icon-arrow-left"></i>
+            Prev
+        </button>
 
-		<button class="btn btn-success btn-next" data-last="Finish ">
-			Next
-			<i class="icon-arrow-right icon-on-right"></i>
-		</button>
-	</div>
+        <button class="btn btn-success btn-next" data-last="Finish ">
+            Next
+            <i class="icon-arrow-right icon-on-right"></i>
+        </button>
+    </div>
 </div>
 {% endblock %}
 
 {% block footerScripts %}
     {% embed 'parts/footer_scripts.twig' %}
     {% block pageScripts %}
-    		<script src="/assets/firenote/js/jquery-ui-1.10.3.custom.min.js"></script>
-    		<script src="/assets/firenote/js/jquery.ui.touch-punch.min.js"></script>
-    		<script src="/assets/firenote/js/fuelux/fuelux.wizard.min.js"></script>
-    		<script src="/assets/firenote/js/jquery.validate.min.js"></script>
-    		<script src="/assets/firenote/js/additional-methods.min.js"></script>
-		    <script src="/assets/firenote/js/bootbox.min.js"></script>
-    		<script src="/assets/firenote/js/jquery.maskedinput.min.js"></script>
+            <script src="/assets/firenote/js/jquery-ui-1.10.3.custom.min.js"></script>
+            <script src="/assets/firenote/js/jquery.ui.touch-punch.min.js"></script>
+            <script src="/assets/firenote/js/fuelux/fuelux.wizard.min.js"></script>
+            <script src="/assets/firenote/js/jquery.validate.min.js"></script>
+            <script src="/assets/firenote/js/additional-methods.min.js"></script>
+            <script src="/assets/firenote/js/bootbox.min.js"></script>
+            <script src="/assets/firenote/js/jquery.maskedinput.min.js"></script>
     {% endblock %}
     
     {% block pageInlinedScripts %}

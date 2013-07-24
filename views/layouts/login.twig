@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+    <head>
         {% include 'parts/page_head.twig' %}
-	</head>
+    </head>
 
-	<body class="login-layout">
-		<div class="main-container container-fluid">
-			<div class="main-content">
-				<div class="row-fluid">
-					<div class="span12">
-						<div class="login-container">
-							<div class="row-fluid">
-								<div class="center">
-									<h1>
-										<i class="icon-fire red"></i>
-										<span class="white">Firenote</span>
-									</h1>
-								</div>
-							</div>
+    <body class="login-layout">
+        <div class="main-container container-fluid">
+            <div class="main-content">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="login-container">
+                            <div class="row-fluid">
+                                <div class="center">
+                                    <h1>
+                                        <i class="icon-fire red"></i>
+                                        <span class="white">Firenote</span>
+                                    </h1>
+                                </div>
+                            </div>
 
-							<div class="space-12"></div>
+                            <div class="space-12"></div>
 
-							<div class="row-fluid">
-								<div class="position-relative">
-									{% block content %}
-									{% endblock %}
-								</div><!--/position-relative-->
-							</div>
-						</div>
-					</div><!--/.span-->
-				</div><!--/.row-fluid-->
-			</div>
-		</div><!--/.main-container-->
+                            <div class="row-fluid">
+                                <div class="position-relative">
+                                    {% block content %}
+                                    {% endblock %}
+                                </div><!--/position-relative-->
+                            </div>
+                        </div>
+                    </div><!--/.span-->
+                </div><!--/.row-fluid-->
+            </div>
+        </div><!--/.main-container-->
 
-		<!--basic scripts-->
+        <!--basic scripts-->
 
-		<!--[if !IE]>-->
+        <!--[if !IE]>-->
 
-		<script type="text/javascript">
-			window.jQuery || document.write("<script src='/assets/firenote/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
-		</script>
+        <script type="text/javascript">
+            window.jQuery || document.write("<script src='/assets/firenote/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+        </script>
 
-		<!--<![endif]-->
+        <!--<![endif]-->
 
-		<!--[if IE]>
+        <!--[if IE]>
 <script type="text/javascript">
  window.jQuery || document.write("<script src='/assets/firenote/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
 
-		<script type="text/javascript">
-			if("ontouchend" in document) document.write("<script src='/assets/firenote/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-		</script>
-		<script src="/assets/firenote/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            if("ontouchend" in document) document.write("<script src='/assets/firenote/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+        </script>
+        <script src="/assets/firenote/js/bootstrap.min.js"></script>
 
-		<!--page specific plugin scripts-->
+        <!--page specific plugin scripts-->
 
-		<!--ace scripts-->
+        <!--ace scripts-->
 
-		<script src="/assets/firenote/js/ace-elements.min.js"></script>
-		<script src="/assets/firenote/js/ace.min.js"></script>
+        <script src="/assets/firenote/js/ace-elements.min.js"></script>
+        <script src="/assets/firenote/js/ace.min.js"></script>
 
-		<!--inline scripts related to this page-->
+        <!--inline scripts related to this page-->
 
-		<script type="text/javascript">
-			function show_box(id) {
-			 $('.widget-box.visible').removeClass('visible');
-			 $('#'+id).addClass('visible');
-			}
-		</script>
-	</body>
+        <script type="text/javascript">
+            function show_box(id) {
+             $('.widget-box.visible').removeClass('visible');
+             $('#'+id).addClass('visible');
+            }
+        </script>
+    </body>
 </html>
-									
+                                    

@@ -1,39 +1,39 @@
 <li class="green">
-	<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-		<i class="icon-envelope"></i>
-		<span class="badge badge-success">{{ container.messages|length }}</span>
-	</a>
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="icon-envelope"></i>
+        <span class="badge badge-success">{{ container.messages|length }}</span>
+    </a>
 
-	<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-closer">
-		<li class="nav-header">
-			<i class="icon-envelope-alt"></i>
-			{{ container.messages|length }} Message{%  if container.messages|length > 1 %}s{% endif %}
-		</li>
+    <ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-closer">
+        <li class="nav-header">
+            <i class="icon-envelope-alt"></i>
+            {{ container.messages|length }} Message{%  if container.messages|length > 1 %}s{% endif %}
+        </li>
 
-		{% for message in container.messages %}
-		<li>
-			<a href="#">
-				<img src="{{ message.avatar }}" class="msg-photo" alt="{{ message.username }}'s Avatar" />
-				<span class="msg-body">
-					<span class="msg-title">
-						<span class="blue">{{ message.username }}:</span>
-						{{ message.text }}
-					</span>
+        {% for message in container.messages %}
+        <li>
+            <a href="#">
+                <img src="{{ message.avatar }}" class="msg-photo" alt="{{ message.username }}'s Avatar" />
+                <span class="msg-body">
+                    <span class="msg-title">
+                        <span class="blue">{{ message.username }}:</span>
+                        {{ message.text }}
+                    </span>
 
-					<span class="msg-time">
-						<i class="icon-time"></i>
-						<span>{{ message.datetime|date("m/d/Y  H\\hi") }}</span>
-					</span>
-				</span>
-			</a>
-		</li>
-		{% endfor %}
+                    <span class="msg-time">
+                        <i class="icon-time"></i>
+                        <span>{{ message.datetime|date("m/d/Y  H\\hi") }}</span>
+                    </span>
+                </span>
+            </a>
+        </li>
+        {% endfor %}
 
-		<li>
-			<a href="#">
-				See all messages
-				<i class="icon-arrow-right"></i>
-			</a>
-		</li>
-	</ul>
+        <li>
+            <a href="#">
+                See all messages
+                <i class="icon-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
 </li>
