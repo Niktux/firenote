@@ -98,13 +98,14 @@ class ApplicationInit extends Command
     private function createDirectories()
     {
         $directories = array(
-            'cache',
             'config',
-            'logs',
             'src',
             'src' . DIRECTORY_SEPARATOR . $this->namespace,
             implode(DIRECTORY_SEPARATOR, array('src', $this->namespace, 'Controllers', 'Home')),
             'views',
+            'var',
+            'var' . DIRECTORY_SEPARATOR . 'cache',
+            'var' . DIRECTORY_SEPARATOR . 'logs',
             'web',
             'web' . DIRECTORY_SEPARATOR . 'assets',
         );
@@ -134,7 +135,7 @@ class ApplicationInit extends Command
             'src/' . $this->namespace . '/Application.php' => 'Application',
             'src/' . $this->namespace . '/Controllers/Home/Provider.php' => 'HomeProvider',
             'src/' . $this->namespace . '/Controllers/Home/Controller.php' => 'HomeController',
-            'views/home.twig' => 'home.twig'
+            'views/home.twig' => 'home.twig',
         );
                 
         $this->step('Creating files');
@@ -143,8 +144,13 @@ class ApplicationInit extends Command
             $filePath = $this->workingDirectory . $file;
             if(! is_file($filePath))
             {
-                $templateFile = __DIR__ . '/templates/' . $templateFile . '.php';
-                $content = include($templateFile);
+                $content = null;
+
+                if($templateFile !== null)
+                {
+                    $templateFile = __DIR__ . '/templates/' . $templateFile . '.php';
+                    $content = include($templateFile);
+                }
                 
                 $this->writeln("<info>Creating $filePath</info>");
                 file_put_contents($filePath, $content);
