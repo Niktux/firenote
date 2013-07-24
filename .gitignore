@@ -17,3 +17,4 @@ src/MyApp
 web/index.php
 config/db.yml
 views/home.twig
+logs
