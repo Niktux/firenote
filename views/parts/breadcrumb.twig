@@ -17,13 +17,15 @@
     </ul><!--.breadcrumb-->
 
     {% block navSearch %}
+    {% if page.search.display %}
     <div class="nav-search" id="nav-search">
-        <form class="form-search">
+        <form class="form-search" method="get" action="{{ path(page.search.action) }}">
             <span class="input-icon">
-                <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                <input name="q" type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
                 <i class="icon-search nav-search-icon"></i>
             </span>
         </form>
     </div><!--#nav-search-->
+    {% endif %}
     {% endblock %}
 </div>

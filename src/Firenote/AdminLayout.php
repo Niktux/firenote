@@ -16,6 +16,7 @@ class AdminLayout
         $shortcuts,
         $menus,
         $containers,
+        $search,
         $applicationInfo;
     
     public function __construct(Session $session)
@@ -33,6 +34,11 @@ class AdminLayout
             'icon' => 'fire',
             'color' => 'red',
         );
+        
+        $this->search = array(
+            'display' => false,
+            'action' => 'admin_search',
+        );
     }
     
     public function getVariables()
@@ -43,6 +49,7 @@ class AdminLayout
             'shortcuts' => $this->shortcuts,
             'containers' => $this->containers,
             'user' => $this->user,
+            'search' => $this->search,
             'flashes' => $this->session->getFlashBag()->all(),
         );
     }
@@ -111,6 +118,19 @@ class AdminLayout
     public function setAppColor($color)
     {
         $this->applicationInfo['color'] = $color;
+        
+        return $this;
+    }
+    
+    public function configureSearchBar($display, $route = null)
+    {
+        if(is_bool($display))
+        {
+            $this->search = array(
+                'display' => $display,
+                'action' => $route,
+            );
+        }
         
         return $this;
     }
