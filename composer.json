@@ -22,7 +22,8 @@
         "symfony/config": "~2.3",
         "symfony/translation": "~2.3",
         "monolog/monolog": ">=1.0.0",
-        "symfony/security": "~2.3"
+        "symfony/security": "~2.3",
+        "imagine/imagine": "0.5.*"
     },
     "require-dev":
     {
