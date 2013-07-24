@@ -15,6 +15,12 @@ class Application extends \\Firenote\\Application
     
     protected function configureAdminLayout(\\Firenote\\AdminLayout \$layout)
     {
+        \$layout
+            ->setAppName('MyApp')
+            ->setAppIcon('ok')
+            ->setAppColor('blue')
+        ;
+    
         /*
         \$layout
             ->addMenu(new Menu\Link('Dashboard', 'admin_dashboard',    'dashboard'))

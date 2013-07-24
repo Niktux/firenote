@@ -16,9 +16,9 @@ class AdminLayout
         $shortcuts,
         $menus,
         $containers,
-        $appName;
+        $applicationInfo;
     
-    public function __construct(Session $session, $appName = 'Firenote')
+    public function __construct(Session $session)
     {
         $this->session = $session;
         
@@ -28,13 +28,17 @@ class AdminLayout
         
         $this->containers = array();
         $this->user = null;
-        $this->appName = $appName;
+        $this->applicationInfo = array(
+            'name' => 'Firenote',
+            'icon' => 'fire',
+            'color' => 'red',
+        );
     }
     
     public function getVariables()
     {
         return array(
-            'appName' => $this->appName,
+            'app' => $this->applicationInfo,
             'menus' => $this->menus,
             'shortcuts' => $this->shortcuts,
             'containers' => $this->containers,
@@ -92,7 +96,21 @@ class AdminLayout
 
     public function setAppName($appName)
     {
-        $this->appName = $appName;
+        $this->applicationInfo['name'] = $appName;
+        
+        return $this;
+    }
+    
+    public function setAppIcon($icon)
+    {
+        $this->applicationInfo['icon'] = $icon;
+        
+        return $this;
+    }
+
+    public function setAppColor($color)
+    {
+        $this->applicationInfo['color'] = $color;
         
         return $this;
     }
