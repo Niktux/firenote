@@ -49,7 +49,7 @@ abstract class AbstractController implements \Firenote\Controller
     protected function redirect($route, $routeParameters = array())
     {
         return new RedirectResponse(
-            $this->urlGenerator->generate($route, $parameters)
+            $this->urlGenerator->generate($route, $routeParameters)
         );
     }
     

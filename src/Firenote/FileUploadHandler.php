@@ -47,7 +47,7 @@ class FileUploadHandler
     
     public function setRandomMode($enabled)
     {
-        if(is_bool($enable))
+        if(is_bool($enabled))
         {
             $this->randomMode = $enabled;
         }
@@ -67,7 +67,7 @@ class FileUploadHandler
     
     public function setPosixMode($enabled)
     {
-        if(is_bool($enable))
+        if(is_bool($enabled))
         {
             $this->posixMode = $enabled;
         }

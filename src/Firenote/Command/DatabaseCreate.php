@@ -7,9 +7,6 @@ use Doctrine\DBAL\Schema\Table;
 
 class DatabaseCreate extends Command
 {
-    private
-        $configuration;
-    
     protected function configure()
     {
         $this

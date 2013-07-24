@@ -28,8 +28,6 @@ class AdminPage extends HtmlPage
             'breadcrumbs' => $this->breadcrumbs,
             'title' => $this->title,
         ));
-        
-        return $variables;
     }
     
     public function addBreadcrumb($title, $path)
