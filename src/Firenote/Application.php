@@ -33,9 +33,11 @@ class Application extends \Silex\Application
         $this->processRootDir($rootDir);
         
         $this['var.path']   = $this['rootDir.path'] . 'var/';
-        $this['public_var.path']   = $this['rootDir.path'] . 'web/var/';
         $this['logs.path']  = $this['var.path'] . 'logs/';
         $this['cache.path'] = $this['var.path'] . 'cache/';
+        
+        $this['public_var.path'] = $this['rootDir.path'] . 'web/var/';
+        $this['images.path']     = $this['public_var.path'] . 'images/';
         
         $this->configuration = $configuration;
         
@@ -142,6 +144,12 @@ class Application extends \Silex\Application
             'twig.path'    => $twigPath,
             'twig.options' => array('cache' => $this['cache.path']),
         ));
+        
+        $this['images.format.path'] = $this['images.path'] . 'resized/';
+        $this['twig'] = $this->share($this->extend('twig', function($twig, $app) {
+            $twig->addExtension(new Twig\Extension($this['image']));
+            return $twig;
+        }));
     }
     
     protected function initializeFirenoteServices()
@@ -156,11 +164,19 @@ class Application extends \Silex\Application
             return new AdminPage($app['twig'], $app['layout']);
         };
         
-        $this['file_upload.path'] =  $this['public_var.path'] . 'upload/';
+        $this['file_upload.path'] =  $this['images.path'] . 'uploaded/';
         $this['file_upload.maxsize'] =  160000; // in bytes
         $this['file_upload'] = function() use($app){
             return new FileUploadHandler($app['file_upload.path'], $app['file_upload.maxsize']);
         };
+        
+        $this['imagine'] = $this->share(function() use($app){
+            return new \Imagine\Gd\Imagine();
+        });
+        
+        $this['image'] = $this->share(function() use($app){
+            return new Images\ImageHandler($this->configuration, $app['imagine']);
+        });
     }
     
     protected function initializeApplicationServices()

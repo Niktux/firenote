@@ -7,7 +7,7 @@
     
     RewriteEngine on
     RewriteRule ^/assets/* - [L]
-    RewriteRule ^/var/upload/* - [L]
+    RewriteRule ^/var/images/* - [L]
     RewriteRule (.*) /index\.php [L]
     
     <Directory "/path/to/firenote/web">
