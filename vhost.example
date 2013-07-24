@@ -1,0 +1,20 @@
+<VirtualHost *:80>
+
+    DocumentRoot "/path/to/firenote/web"
+    
+    ErrorLog "/path/to/firenote/var/logs/error.log"
+    CustomLog "/path/to/firenote/var/logs/access.log" common
+    
+    RewriteEngine on
+    RewriteRule ^/assets/* - [L]
+    RewriteRule ^/var/upload/* - [L]
+    RewriteRule (.*) /index\.php [L]
+    
+    <Directory "/path/to/firenote/web">
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+        Require all granted
+  </Directory>
+    
+</VirtualHost>
