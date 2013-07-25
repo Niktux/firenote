@@ -23,8 +23,10 @@ class Extension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter('image', function($path, $format) {
-                // FIXME
-                return $path;
+                $path = $this->handler->applyFormat($path, $format);
+                
+                // FIXME is it the right place to do this ?
+                return substr($path, strpos($path, '/var/'));
             }),
         );
     }

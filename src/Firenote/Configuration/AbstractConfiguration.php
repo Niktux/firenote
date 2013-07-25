@@ -87,7 +87,7 @@ abstract class AbstractConfiguration implements \Firenote\Configuration
     {
         $tokens = explode(self::SEPARATOR, $fqn, $maxToken);
         
-        if( count($tokens) < $maxToken )
+        if(count($tokens) < $maxToken)
         {
             throw new InvalidIdentifierException($fqn);
         }

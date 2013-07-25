@@ -145,7 +145,6 @@ class Application extends \Silex\Application
             'twig.options' => array('cache' => $this['cache.path']),
         ));
         
-        $this['images.format.path'] = $this['images.path'] . 'resized/';
         $this['twig'] = $this->share($this->extend('twig', function($twig, $app) {
             $twig->addExtension(new Twig\Extension($this['image']));
             return $twig;
@@ -174,8 +173,9 @@ class Application extends \Silex\Application
             return new \Imagine\Gd\Imagine();
         });
         
+        $this['images.format.path'] = $this['images.path'] . 'resized/';
         $this['image'] = $this->share(function() use($app){
-            return new Images\ImageHandler($this->configuration, $app['imagine']);
+            return new Images\ImageHandler($this->configuration, $app['imagine'],  $app['images.format.path']);
         });
     }
     

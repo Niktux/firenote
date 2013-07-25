@@ -21,6 +21,13 @@ interface Configuration
      *
      *
      * @param string $fqn
+     */
+    public function readGroup($fqn);
+    
+    /**
+     *
+     *
+     * @param string $fqn
      *
      * @return mixed
      *
