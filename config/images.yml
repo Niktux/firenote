@@ -1,6 +1,4 @@
 driver: gd
 formats:
-  small:
-    resize: 40x40
-  medium:
-    resize: 80x80
+  avatar_small:
+    resize: 36x36
