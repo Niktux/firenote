@@ -131,6 +131,7 @@ class ApplicationInit extends Command
         $files = array(
             '.gitignore' => 'gitignore',
             'config/db.yml' => 'dbConfig',
+            'config/images.yml' => 'imagesConfig',
             'web/index.php' => 'index',
             'src/' . $this->namespace . '/Application.php' => 'Application',
             'src/' . $this->namespace . '/Controllers/Home/Provider.php' => 'HomeProvider',
