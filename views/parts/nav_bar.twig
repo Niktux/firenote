@@ -14,31 +14,7 @@
                         {% for container in page.containers %}
                             {% include container.view with {'container': container, 'page': page} only %}
                         {% endfor %}
-                    
-
-                        <li class="{{ page.app.color }}">
-                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                                <img class="nav-user-photo" src="{{ page.user.avatar|image('avatar_small') }}" alt="Jason's Photo" />
-                                <span class="user-info">
-                                    <small>Connected as</small>
-                                    {{ page.user.username }}
-                                </span>
-
-                                <i class="icon-caret-down"></i>
-                            </a>
-
-                            <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
-                                <li>
-                                    <a href="{{ path('users_profile', {username: page.user.username}) }}"><i class="icon-user"></i>Profile</a>
-                                </li>
-
-                                <li class="divider"></li>
-
-                                <li>
-                                    <a href="{{ path('admin_logout') }}"><i class="icon-off"></i>Logout</a>
-                                </li>
-                            </ul>
-                        </li>
+                        
                     </ul><!--/.ace-nav-->
                 </div><!--/.container-fluid-->
                 {% endblock %}

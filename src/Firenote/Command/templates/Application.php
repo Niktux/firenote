@@ -21,7 +21,6 @@ class Application extends \\Firenote\\Application
             ->setAppColor('blue')
         ;
     
-        /*
         \$layout
             ->addMenu(new Menu\Link('Dashboard', 'admin_dashboard',    'dashboard'))
             ->addMenu((new Menu\Root('Users', 'user'))
@@ -31,12 +30,12 @@ class Application extends \\Firenote\\Application
             ->addShortcut('users_list', 'user')
             ->addShortcut('users_list', 'comment')
             ->addShortcut('users_list', 'wrench')
-            ->addShortcut('users_list', 'th-list')
+            ->addShortcut('admin_logout', 'off')
             
             ->addContainer(new Containers\Messages(\$this->getMessages()))
             ->addContainer(new Containers\Tasks(\$this->getTasks()))
+            ->addContainer(new Containers\User())
         ;
-        //*/
     }
     
     private function getMessages()
