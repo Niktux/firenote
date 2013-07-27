@@ -1170,7 +1170,7 @@ blockquote.pull-right {
   margin-top: 1px;
 }
 .nav-search .nav-search-input {
-  border-color: #6fb3e0;
+  border-color: #bbb;
   border-width: 1px;
   width: 120px;
   height: 18px !important;
@@ -1194,10 +1194,10 @@ blockquote.pull-right {
 }
 .nav-search .nav-search-input:focus,
 .nav-search .nav-search-input:hover {
-  border-color: #6fb3e0;
+  border-color: #333;
 }
 .nav-search .nav-search-icon {
-  color: #6fb3e0 !important;
+  color: #6fb3e0;
   font-size: 14px !important;
   line-height: 24px !important;
 }
