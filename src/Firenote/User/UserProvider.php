@@ -81,4 +81,14 @@ class UserProvider implements UserProviderInterface
         // FIXME a little brutal ;-)
         return $this->loadUserByUsername($username);
     }
+    
+    public function delete($username)
+    {
+        $affectedRows = $this->db->delete(
+            'users',
+            array('username' => $username)
+        );
+        
+        return $affectedRows > 0;
+    }
 }

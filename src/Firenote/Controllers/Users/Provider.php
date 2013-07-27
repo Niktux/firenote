@@ -21,6 +21,8 @@ class Provider implements ControllerProviderInterface
         $controllers->get('/list', 'users.controller:usersAction')->bind('users_list');
         $controllers->get('/{username}/profile', 'users.controller:profileAction')->bind('users_profile')
                     ->assert('username', '\w+');
+        $controllers->get('/delete/{username}', 'users.controller:deleteConfirmationAction')->bind('users_delete');
+        $controllers->post('/delete/{username}', 'users.controller:deleteAction');
         
         return $controllers;
     }

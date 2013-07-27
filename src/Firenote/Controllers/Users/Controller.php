@@ -44,6 +44,31 @@ class Controller extends \Firenote\Controllers\AbstractController
         ));
     }
     
+    public function deleteConfirmationAction($username)
+    {
+        return $this->page
+            ->setTitle('Delete')
+            ->render('pages/users/delete.twig', array(
+                'profile' => $this->userProvider->loadUserByUsername($username),
+        ));
+    }
+    
+    public function deleteAction($username)
+    {
+        $success = $this->userProvider->delete($username);
+        
+        if($success === true)
+        {
+            $this->session->getFlashBag()->add('success', 'User was successfully deleted');
+        }
+        else
+        {
+            $this->session->getFlashBag()->add('danger', 'ERROR : User was NOT deleted');
+        }
+        
+        return $this->redirect('users_list');
+    }
+    
     public function registerAction()
     {
         // FIXME filter security

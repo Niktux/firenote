@@ -1,0 +1,13 @@
+div.user-deletion {
+	border-bottom: none;
+	vertical-align: middle;
+	display: inline;
+}
+
+div.user-deletion p {
+	margin-left: 1em;
+}
+
+div.user-deletion img {
+	max-width: 56px;
+}

@@ -58,9 +58,9 @@
                             <i class="icon-edit bigger-120"></i>
                         </button>
 
-                        <button class="btn btn-mini btn-danger">
+                        <a href="{{ path('users_delete', {username: user.username}) }}" class="btn btn-mini btn-danger">
                             <i class="icon-trash bigger-120"></i>
-                        </button>
+                        </a>
                     </div>
 
                     <div class="hidden-desktop visible-phone">
@@ -79,7 +79,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                    <a href="{{ path('users_delete', {username: user.username}) }}" class="tooltip-error" data-rel="tooltip" title="Delete">
                                         <span class="red">
                                             <i class="icon-trash bigger-120"></i>
                                         </span>

@@ -1,0 +1,33 @@
+{% extends 'layouts/admin.twig' %}
+
+{% block content %}
+<form method="post" action"{{ path('users_delete', {username: profile.username}) }}">
+    <div class="span12 widget-container-span ui-sortable">
+		<div class="widget-box transparent">
+			<div class="widget-header red">
+				<h4 class="lighter">Delete confirmation</h4>
+			</div>
+
+			<div class="widget-body">
+				<div class="widget-main padding-6 no-padding-left no-padding-right">
+					<div class="profile-activity user-deletion clearfix">
+					    <img class="pull-left" src="{{ profile.avatar|image('avatar_medium') }}">
+					    <p>You are about to delete user <b>{{ profile.username }}</b>. Do you want to continue ?</p>
+					</div>
+					<br/>
+					<div>
+    					<button type="submit" class="btn btn-app btn-danger btn-mini">
+                    	    <i class="icon-trash bigger-200"></i>
+                    		Delete
+                    	</button>
+                    	<a href={{ path('users_list') }} class="btn btn-app btn-warning btn-mini">
+                    		<i class="icon-undo bigger-230"></i>
+                            Cancel
+                    	</a>
+                	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+{% endblock %}
