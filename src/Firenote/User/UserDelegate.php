@@ -11,7 +11,7 @@ abstract class UserDelegate implements UserInterface
     
     public function __construct(UserInterface $user)
     {
-       $this->user = $user;
+        $this->user = $user;
     }
     
     public function getRoles()
