@@ -18,7 +18,7 @@
                 {% endblock %}
                 </div><!--#sidebar-shortcuts-->
 
-                <ul class="nav nav-list">
+                <ul class="nav nav-list {{ page.app.color }}">
                 
                 {% for menu in page.menus %}
                     <li>
@@ -35,9 +35,9 @@
                         {% if menu.hasSubmenus %}
                             <ul class="submenu">
                             {% for submenu in menu.submenus %}
-                                <li>
+                                <li class="{{ page.app.color }}" >
                                     <a href="{{ path(submenu.link) }}">
-                                        <i class="icon-double-angle-right"></i>
+                                        <i class="icon-double-angle-right {{ page.app.color }}"></i>
                                         {{ submenu.label }}
                                     </a>
                                 </li>

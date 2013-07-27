@@ -1003,14 +1003,24 @@ blockquote.pull-right {
   padding-right: 5px;
   padding-left: 5px;
 }
+.ace-nav > li.white {
+  color: #333; !important;
+  background: #fff;
+}
 .ace-nav > li.grey {
-  background: #555555;
+  background: #777;
 }
 .ace-nav > li.purple {
-  background: #892e65;
+  background: #A069C3;
+}
+.ace-nav > li.dark-green {
+  background: #2e8965;
 }
 .ace-nav > li.green {
-  background: #2e8965;
+  background: #69aa46;
+}
+.ace-nav > li.blue {
+  background: #478FCA;
 }
 .ace-nav > li.light-blue {
   background: #62a8d1;
@@ -1018,11 +1028,20 @@ blockquote.pull-right {
 .ace-nav > li.light-blue2 {
   background: #42a8e1;
 }
-.ace-nav > li.red {
+.ace-nav > li.dark-red {
   background: #b74635;
 }
+.ace-nav > li.red {
+  background: #dd5a43;
+}
+.ace-nav > li.brown {
+  background: brown;
+}
+.ace-nav > li.light-red {
+  background: #FF7777;
+}
 .ace-nav > li.light-green {
-  background: #9abc32;
+  background: #B0D877;
 }
 .ace-nav > li.light-purple {
   background: #cb6fd7;
@@ -1035,6 +1054,15 @@ blockquote.pull-right {
 }
 .ace-nav > li.light-pink {
   background: #f4dae5;
+}
+.ace-nav > li.pink {
+  background: #c6699f;
+}
+.ace-nav > li.pink2 {
+  background: #D6487E;
+}
+.ace-nav > li.light-grey {
+  background: #bbb;
 }
 .ace-nav > li.dark {
   background: #404040;
@@ -11878,4 +11906,293 @@ img.editable:hover {
   -webkit-box-shadow: -40px 0 0 #FBFBFC inset, -41px 0 0 #ECECF0 inset;
   -moz-box-shadow: -40px 0 0 #FBFBFC inset, -41px 0 0 #ECECF0 inset;
   box-shadow: -40px 0 0 #FBFBFC inset, -41px 0 0 #ECECF0 inset;
+}
+
+.nav-list.pink > li,
+.nav-list.pink > li.open > a,
+.nav-list.pink > li.active > a,
+.nav-list.pink > li > a:hover,
+.nav-list.pink > li.open > a:hover
+.nav-list.pink > li.active > a:hover
+.nav-list.pink > li a:hover > .arrow,
+.nav-list.pink > li:hover > a > .arrow,
+.nav-list.pink > li.open > a > .arrow,
+.nav-list.pink > li.active > a > .arrow,
+.nav-list.pink > li .submenu > li > a:hover {
+  color: #c6699f !important;
+}
+.nav-list.pink > li > a:hover:before {
+  background-color: #c6699f;
+}
+.nav-list.orange > li,
+.nav-list.orange > li.open > a,
+.nav-list.orange > li.active > a,
+.nav-list.orange > li > a:hover,
+.nav-list.orange > li.open > a:hover
+.nav-list.orange > li.active > a:hover
+.nav-list.orange > li a:hover > .arrow,
+.nav-list.orange > li:hover > a > .arrow,
+.nav-list.orange > li.open > a > .arrow,
+.nav-list.orange > li.active > a > .arrow,
+.nav-list.orange > li .submenu > li > a:hover {
+  color: #ff892a !important;
+}
+.nav-list.orange > li > a:hover:before {
+  background-color: #ff892a;
+}
+.nav-list.red > li,
+.nav-list.red > li.open > a,
+.nav-list.red > li.active > a,
+.nav-list.red > li > a:hover,
+.nav-list.red > li.open > a:hover
+.nav-list.red > li.active > a:hover
+.nav-list.red > li a:hover > .arrow,
+.nav-list.red > li:hover > a > .arrow,
+.nav-list.red > li.open > a > .arrow,
+.nav-list.red > li.active > a > .arrow,
+.nav-list.red > li .submenu > li > a:hover {
+  color: #dd5a43 !important;
+}
+.nav-list.red > li > a:hover:before {
+  background-color: #dd5a43;
+}
+.nav-list.green > li,
+.nav-list.green > li.open > a,
+.nav-list.green > li.active > a,
+.nav-list.green > li > a:hover,
+.nav-list.green > li.open > a:hover
+.nav-list.green > li.active > a:hover
+.nav-list.green > li a:hover > .arrow,
+.nav-list.green > li:hover > a > .arrow,
+.nav-list.green > li.open > a > .arrow,
+.nav-list.green > li.active > a > .arrow,
+.nav-list.green > li .submenu > li > a:hover {
+  color: #69aa46 !important;
+}
+.nav-list.green > li > a:hover:before {
+  background-color: #69aa46;
+}
+.nav-list.dark > li,
+.nav-list.dark > li.open > a,
+.nav-list.dark > li.active > a,
+.nav-list.dark > li > a:hover,
+.nav-list.dark > li.open > a:hover
+.nav-list.dark > li.active > a:hover
+.nav-list.dark > li a:hover > .arrow,
+.nav-list.dark > li:hover > a > .arrow,
+.nav-list.dark > li.open > a > .arrow,
+.nav-list.dark > li.active > a > .arrow,
+.nav-list.dark > li .submenu > li > a:hover {
+  color: #333 !important;
+}
+.nav-list.dark > li > a:hover:before {
+  background-color: #333;
+}
+.nav-list.green > li,
+.nav-list.green > li.open > a,
+.nav-list.green > li.active > a,
+.nav-list.green > li > a:hover,
+.nav-list.green > li.open > a:hover
+.nav-list.green > li.active > a:hover
+.nav-list.green > li a:hover > .arrow,
+.nav-list.green > li:hover > a > .arrow,
+.nav-list.green > li.open > a > .arrow,
+.nav-list.green > li.active > a > .arrow,
+.nav-list.green > li .submenu > li > a:hover {
+  color: #69aa46 !important;
+}
+.nav-list.green > li > a:hover:before {
+  background-color: #69aa46;
+}
+.nav-list.light-blue2 > li,
+.nav-list.light-blue2 > li.open > a,
+.nav-list.light-blue2 > li.active > a,
+.nav-list.light-blue2 > li > a:hover,
+.nav-list.light-blue2 > li.open > a:hover
+.nav-list.light-blue2 > li.active > a:hover
+.nav-list.light-blue2 > li a:hover > .arrow,
+.nav-list.light-blue2 > li:hover > a > .arrow,
+.nav-list.light-blue2 > li.open > a > .arrow,
+.nav-list.light-blue2 > li.active > a > .arrow,
+.nav-list.light-blue2 > li .submenu > li > a:hover {
+  color: #42a8e1 !important;
+}
+.nav-list.light-blue2 > li > a:hover:before {
+  background-color: #42a8e1;
+}
+.nav-list.light-blue > li,
+.nav-list.light-blue > li.open > a,
+.nav-list.light-blue > li.active > a,
+.nav-list.light-blue > li > a:hover,
+.nav-list.light-blue > li.open > a:hover
+.nav-list.light-blue > li.active > a:hover
+.nav-list.light-blue > li a:hover > .arrow,
+.nav-list.light-blue > li:hover > a > .arrow,
+.nav-list.light-blue > li.open > a > .arrow,
+.nav-list.light-blue > li.active > a > .arrow,
+.nav-list.light-blue > li .submenu > li > a:hover {
+  color: #93CBF9 !important;
+}
+.nav-list.light-blue > li > a:hover:before {
+  background-color: #93CBF9;
+}
+.nav-list.blue > li,
+.nav-list.blue > li.open > a,
+.nav-list.blue > li.active > a,
+.nav-list.blue > li > a:hover,
+.nav-list.blue > li.open > a:hover
+.nav-list.blue > li.active > a:hover
+.nav-list.blue > li a:hover > .arrow,
+.nav-list.blue > li:hover > a > .arrow,
+.nav-list.blue > li.open > a > .arrow,
+.nav-list.blue > li.active > a > .arrow,
+.nav-list.blue > li .submenu > li > a:hover {
+  color: #478FCA !important;
+}
+.nav-list.blue > li > a:hover:before {
+  background-color: #478FCA;
+}
+.nav-list.light-red > li,
+.nav-list.light-red > li.open > a,
+.nav-list.light-red > li.active > a,
+.nav-list.light-red > li > a:hover,
+.nav-list.light-red > li.open > a:hover
+.nav-list.light-red > li.active > a:hover
+.nav-list.light-red > li a:hover > .arrow,
+.nav-list.light-red > li:hover > a > .arrow,
+.nav-list.light-red > li.open > a > .arrow,
+.nav-list.light-red > li.active > a > .arrow,
+.nav-list.light-red > li .submenu > li > a:hover {
+  color: #FF7777 !important;
+}
+.nav-list.light-red > li > a:hover:before {
+  background-color: #FF7777;
+}
+.nav-list.white > li,
+.nav-list.white > li.open > a,
+.nav-list.white > li.active > a,
+.nav-list.white > li > a:hover,
+.nav-list.white > li.open > a:hover
+.nav-list.white > li.active > a:hover
+.nav-list.white > li a:hover > .arrow,
+.nav-list.white > li:hover > a > .arrow,
+.nav-list.white > li.open > a > .arrow,
+.nav-list.white > li.active > a > .arrow,
+.nav-list.white > li .submenu > li > a:hover {
+  color: #fff !important;
+}
+.nav-list.white > li > a:hover:before {
+  background-color: #fff;
+}
+.nav-list.light-green > li,
+.nav-list.light-green > li.open > a,
+.nav-list.light-green > li.active > a,
+.nav-list.light-green > li > a:hover,
+.nav-list.light-green > li.open > a:hover
+.nav-list.light-green > li.active > a:hover
+.nav-list.light-green > li a:hover > .arrow,
+.nav-list.light-green > li:hover > a > .arrow,
+.nav-list.light-green > li.open > a > .arrow,
+.nav-list.light-green > li.active > a > .arrow,
+.nav-list.light-green > li .submenu > li > a:hover {
+  color: #B0D877 !important;
+}
+.nav-list.light-green > li > a:hover:before {
+  background-color: #B0D877;
+}
+.nav-list.light-orange > li,
+.nav-list.light-orange > li.open > a,
+.nav-list.light-orange > li.active > a,
+.nav-list.light-orange > li > a:hover,
+.nav-list.light-orange > li.open > a:hover
+.nav-list.light-orange > li.active > a:hover
+.nav-list.light-orange > li a:hover > .arrow,
+.nav-list.light-orange > li:hover > a > .arrow,
+.nav-list.light-orange > li.open > a > .arrow,
+.nav-list.light-orange > li.active > a > .arrow,
+.nav-list.light-orange > li .submenu > li > a:hover {
+  color: #FCAC6F !important;
+}
+.nav-list.light-orange > li > a:hover:before {
+  background-color: #FCAC6F;
+}
+.nav-list.purple > li,
+.nav-list.purple > li.open > a,
+.nav-list.purple > li.active > a,
+.nav-list.purple > li > a:hover,
+.nav-list.purple > li.open > a:hover
+.nav-list.purple > li.active > a:hover
+.nav-list.purple > li a:hover > .arrow,
+.nav-list.purple > li:hover > a > .arrow,
+.nav-list.purple > li.open > a > .arrow,
+.nav-list.purple > li.active > a > .arrow,
+.nav-list.purple > li .submenu > li > a:hover {
+  color: #A069C3 !important;
+}
+.nav-list.purple > li > a:hover:before {
+  background-color: #A069C3;
+}
+.nav-list.pink2 > li,
+.nav-list.pink2 > li.open > a,
+.nav-list.pink2 > li.active > a,
+.nav-list.pink2 > li > a:hover,
+.nav-list.pink2 > li.open > a:hover
+.nav-list.pink2 > li.active > a:hover
+.nav-list.pink2 > li a:hover > .arrow,
+.nav-list.pink2 > li:hover > a > .arrow,
+.nav-list.pink2 > li.open > a > .arrow,
+.nav-list.pink2 > li.active > a > .arrow,
+.nav-list.pink2 > li .submenu > li > a:hover {
+  color: #D6487E !important;
+}
+.nav-list.pink2 > li > a:hover:before {
+  background-color: #D6487E;
+}
+.nav-list.brown > li,
+.nav-list.brown > li.open > a,
+.nav-list.brown > li.active > a,
+.nav-list.brown > li > a:hover,
+.nav-list.brown > li.open > a:hover
+.nav-list.brown > li.active > a:hover
+.nav-list.brown > li a:hover > .arrow,
+.nav-list.brown > li:hover > a > .arrow,
+.nav-list.brown > li.open > a > .arrow,
+.nav-list.brown > li.active > a > .arrow,
+.nav-list.brown > li .submenu > li > a:hover {
+  color: brown !important;
+}
+.nav-list.brown > li > a:hover:before {
+  background-color: brown;
+}
+.nav-list.light-grey > li,
+.nav-list.light-grey > li.open > a,
+.nav-list.light-grey > li.active > a,
+.nav-list.light-grey > li > a:hover,
+.nav-list.light-grey > li.open > a:hover
+.nav-list.light-grey > li.active > a:hover
+.nav-list.light-grey > li a:hover > .arrow,
+.nav-list.light-grey > li:hover > a > .arrow,
+.nav-list.light-grey > li.open > a > .arrow,
+.nav-list.light-grey > li.active > a > .arrow,
+.nav-list.light-grey > li .submenu > li > a:hover {
+  color: #BBB !important;
+}
+.nav-list.light-grey > li > a:hover:before {
+  background-color: #BBB;
+}
+.nav-list.grey > li,
+.nav-list.grey > li.open > a,
+.nav-list.grey > li.active > a,
+.nav-list.grey > li > a:hover,
+.nav-list.grey > li.open > a:hover
+.nav-list.grey > li.active > a:hover
+.nav-list.grey > li a:hover > .arrow,
+.nav-list.grey > li:hover > a > .arrow,
+.nav-list.grey > li.open > a > .arrow,
+.nav-list.grey > li.active > a > .arrow,
+.nav-list.grey > li .submenu > li > a:hover {
+  color: #777 !important;
+}
+.nav-list.grey > li > a:hover:before {
+  background-color: #777;
 }
