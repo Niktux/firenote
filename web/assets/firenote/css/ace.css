@@ -11924,6 +11924,11 @@ img.editable:hover {
 .nav-list.pink > li > a:hover:before {
   background-color: #c6699f;
 }
+.nav-list.pink li.active:after,
+.nav-list.pink li.active > a:after {
+  border-right-color: #c6699f !important;
+}
+
 .nav-list.orange > li,
 .nav-list.orange > li.open > a,
 .nav-list.orange > li.active > a,
@@ -11940,6 +11945,11 @@ img.editable:hover {
 .nav-list.orange > li > a:hover:before {
   background-color: #ff892a;
 }
+.nav-list.orange li.active:after,
+.nav-list.orange li.active > a:after {
+  border-right-color: #ff892a !important;
+}
+
 .nav-list.red > li,
 .nav-list.red > li.open > a,
 .nav-list.red > li.active > a,
@@ -11956,22 +11966,11 @@ img.editable:hover {
 .nav-list.red > li > a:hover:before {
   background-color: #dd5a43;
 }
-.nav-list.green > li,
-.nav-list.green > li.open > a,
-.nav-list.green > li.active > a,
-.nav-list.green > li > a:hover,
-.nav-list.green > li.open > a:hover
-.nav-list.green > li.active > a:hover
-.nav-list.green > li a:hover > .arrow,
-.nav-list.green > li:hover > a > .arrow,
-.nav-list.green > li.open > a > .arrow,
-.nav-list.green > li.active > a > .arrow,
-.nav-list.green > li .submenu > li > a:hover {
-  color: #69aa46 !important;
+.nav-list.red li.active:after,
+.nav-list.red li.active > a:after {
+  border-right-color: #dd5a43 !important;
 }
-.nav-list.green > li > a:hover:before {
-  background-color: #69aa46;
-}
+
 .nav-list.dark > li,
 .nav-list.dark > li.open > a,
 .nav-list.dark > li.active > a,
@@ -11988,6 +11987,11 @@ img.editable:hover {
 .nav-list.dark > li > a:hover:before {
   background-color: #333;
 }
+.nav-list.dark li.active:after,
+.nav-list.dark li.active > a:after {
+  border-right-color: #333 !important;
+}
+
 .nav-list.green > li,
 .nav-list.green > li.open > a,
 .nav-list.green > li.active > a,
@@ -12004,6 +12008,11 @@ img.editable:hover {
 .nav-list.green > li > a:hover:before {
   background-color: #69aa46;
 }
+.nav-list.green li.active:after,
+.nav-list.green li.active > a:after {
+  border-right-color: #69aa46 !important;
+}
+
 .nav-list.light-blue2 > li,
 .nav-list.light-blue2 > li.open > a,
 .nav-list.light-blue2 > li.active > a,
@@ -12020,6 +12029,11 @@ img.editable:hover {
 .nav-list.light-blue2 > li > a:hover:before {
   background-color: #42a8e1;
 }
+.nav-list.light-blue2 li.active:after,
+.nav-list.light-blue2 li.active > a:after {
+  border-right-color: #42a8e1 !important;
+}
+
 .nav-list.light-blue > li,
 .nav-list.light-blue > li.open > a,
 .nav-list.light-blue > li.active > a,
@@ -12036,6 +12050,11 @@ img.editable:hover {
 .nav-list.light-blue > li > a:hover:before {
   background-color: #93CBF9;
 }
+.nav-list.light-blue li.active:after,
+.nav-list.light-blue li.active > a:after {
+  border-right-color: #93CBF9 !important;
+}
+
 .nav-list.blue > li,
 .nav-list.blue > li.open > a,
 .nav-list.blue > li.active > a,
@@ -12052,6 +12071,11 @@ img.editable:hover {
 .nav-list.blue > li > a:hover:before {
   background-color: #478FCA;
 }
+.nav-list.blue li.active:after,
+.nav-list.blue li.active > a:after {
+  border-right-color: #478FCA !important;
+}
+
 .nav-list.light-red > li,
 .nav-list.light-red > li.open > a,
 .nav-list.light-red > li.active > a,
@@ -12063,11 +12087,16 @@ img.editable:hover {
 .nav-list.light-red > li.open > a > .arrow,
 .nav-list.light-red > li.active > a > .arrow,
 .nav-list.light-red > li .submenu > li > a:hover {
-  color: #FF7777 !important;
+  color: #f77 !important;
 }
 .nav-list.light-red > li > a:hover:before {
-  background-color: #FF7777;
+  background-color: #f77;
 }
+.nav-list.light-red li.active:after,
+.nav-list.light-red li.active > a:after {
+  border-right-color: #f77 !important;
+}
+
 .nav-list.white > li,
 .nav-list.white > li.open > a,
 .nav-list.white > li.active > a,
@@ -12084,6 +12113,11 @@ img.editable:hover {
 .nav-list.white > li > a:hover:before {
   background-color: #fff;
 }
+.nav-list.white li.active:after,
+.nav-list.white li.active > a:after {
+  border-right-color: #fff !important;
+}
+
 .nav-list.light-green > li,
 .nav-list.light-green > li.open > a,
 .nav-list.light-green > li.active > a,
@@ -12100,6 +12134,11 @@ img.editable:hover {
 .nav-list.light-green > li > a:hover:before {
   background-color: #B0D877;
 }
+.nav-list.light-green li.active:after,
+.nav-list.light-green li.active > a:after {
+  border-right-color: #B0D877 !important;
+}
+
 .nav-list.light-orange > li,
 .nav-list.light-orange > li.open > a,
 .nav-list.light-orange > li.active > a,
@@ -12116,6 +12155,11 @@ img.editable:hover {
 .nav-list.light-orange > li > a:hover:before {
   background-color: #FCAC6F;
 }
+.nav-list.light-orange li.active:after,
+.nav-list.light-orange li.active > a:after {
+  border-right-color: #FCAC6F !important;
+}
+
 .nav-list.purple > li,
 .nav-list.purple > li.open > a,
 .nav-list.purple > li.active > a,
@@ -12132,6 +12176,11 @@ img.editable:hover {
 .nav-list.purple > li > a:hover:before {
   background-color: #A069C3;
 }
+.nav-list.purple li.active:after,
+.nav-list.purple li.active > a:after {
+  border-right-color: #A069C3 !important;
+}
+
 .nav-list.pink2 > li,
 .nav-list.pink2 > li.open > a,
 .nav-list.pink2 > li.active > a,
@@ -12148,6 +12197,11 @@ img.editable:hover {
 .nav-list.pink2 > li > a:hover:before {
   background-color: #D6487E;
 }
+.nav-list.pink2 li.active:after,
+.nav-list.pink2 li.active > a:after {
+  border-right-color: #D6487E !important;
+}
+
 .nav-list.brown > li,
 .nav-list.brown > li.open > a,
 .nav-list.brown > li.active > a,
@@ -12164,6 +12218,11 @@ img.editable:hover {
 .nav-list.brown > li > a:hover:before {
   background-color: brown;
 }
+.nav-list.brown li.active:after,
+.nav-list.brown li.active > a:after {
+  border-right-color: brown !important;
+}
+
 .nav-list.light-grey > li,
 .nav-list.light-grey > li.open > a,
 .nav-list.light-grey > li.active > a,
@@ -12180,6 +12239,11 @@ img.editable:hover {
 .nav-list.light-grey > li > a:hover:before {
   background-color: #BBB;
 }
+.nav-list.light-grey li.active:after,
+.nav-list.light-grey li.active > a:after {
+  border-right-color: #BBB !important;
+}
+
 .nav-list.grey > li,
 .nav-list.grey > li.open > a,
 .nav-list.grey > li.active > a,
@@ -12195,4 +12259,8 @@ img.editable:hover {
 }
 .nav-list.grey > li > a:hover:before {
   background-color: #777;
+}
+.nav-list.grey li.active:after,
+.nav-list.grey li.active > a:after {
+  border-right-color: #777 !important;
 }

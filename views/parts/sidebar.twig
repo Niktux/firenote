@@ -18,10 +18,21 @@
                 {% endblock %}
                 </div><!--#sidebar-shortcuts-->
 
-                <ul class="nav nav-list {{ page.app.color }}">
+                {% set currentRoute = app.request.attributes.get('_route') %}
                 
+                <ul class="nav nav-list {{ page.app.color }}">
                 {% for menu in page.menus %}
-                    <li>
+                
+                    {% set active = (menu.link == currentRoute) %}
+                    {% if menu.hasSubmenus %}
+                        {% for submenu in menu.submenus %}
+                            {% if submenu.link == currentRoute %}
+                                {% set active = true %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                
+                    <li {% if active %}class="active {% if menu.hasSubmenus %}open{% endif %}"{% endif %}>
                     {% if menu.hasSubmenus %}
                         <a href="#" class="dropdown-toggle">
                     {% else %}
@@ -35,7 +46,7 @@
                         {% if menu.hasSubmenus %}
                             <ul class="submenu">
                             {% for submenu in menu.submenus %}
-                                <li class="{{ page.app.color }}" >
+                                <li class="{{ page.app.color }} {% if submenu.link == currentRoute %}active{% endif %}" >
                                     <a href="{{ path(submenu.link) }}">
                                         <i class="icon-double-angle-right {{ page.app.color }}"></i>
                                         {{ submenu.label }}
