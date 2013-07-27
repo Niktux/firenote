@@ -119,7 +119,11 @@ class FileUploadHandler
         
         if($pathInfo['filesize'] > $this->maxSize)
         {
-            throw new Security(sprintf('File size (%d bytes) exceeds limit (%d bytes)'));
+            throw new Security(sprintf(
+                'File size (%d bytes) exceeds limit (%d bytes)',
+                $pathInfo['filesize'],
+                $this->maxSize
+            ));
         }
     }
     
