@@ -46,6 +46,21 @@ abstract class AbstractController implements \Firenote\Controller
         return $this;
     }
     
+    protected function addFlash($type, $message)
+    {
+        $this->session->getFlashBag()->add($type, $message);
+    }
+    
+    protected function addOperationStatusFlash($status, $successMessage, $failMessage)
+    {
+        if($status === true)
+        {
+            return $this->addFlash('success', $successMessage);
+        }
+        
+        return $this->addFlash('danger', $failMessage);
+    }
+    
     protected function redirect($route, $routeParameters = array())
     {
         return new RedirectResponse(

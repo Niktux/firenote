@@ -57,14 +57,11 @@ class Controller extends \Firenote\Controllers\AbstractController
     {
         $success = $this->userProvider->delete($username);
         
-        if($success === true)
-        {
-            $this->session->getFlashBag()->add('success', 'User was successfully deleted');
-        }
-        else
-        {
-            $this->session->getFlashBag()->add('danger', 'ERROR : User was NOT deleted');
-        }
+        $this->addOperationStatusFlash(
+            $success,
+            'User was successfully deleted',
+            'ERROR : User was NOT deleted'
+        );
         
         return $this->redirect('users_list');
     }
@@ -73,15 +70,12 @@ class Controller extends \Firenote\Controllers\AbstractController
     {
         // FIXME filter security
         $user = $this->createUser($this->request);
-        
-        if($user instanceof UserInterface)
-        {
-            $this->session->getFlashBag()->add('success', 'User was successfully created');
-        }
-        else
-        {
-            $this->session->getFlashBag()->add('danger', 'ERROR : User was NOT created');
-        }
+
+        $this->addOperationStatusFlash(
+            $user instanceof UserInterface,
+            'User was successfully created',
+            'ERROR : User was NOT created'
+        );
         
         return $this->redirect('users_list');
     }
