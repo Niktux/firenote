@@ -18,3 +18,4 @@ web/index.php
 config/db.yml
 views/home.twig
 logs
+web/var/images/wiki
