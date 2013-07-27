@@ -11,3 +11,7 @@ div.user-deletion p {
 div.user-deletion img {
 	max-width: 56px;
 }
+
+td.user img {
+    margin-right: 10px;
+}

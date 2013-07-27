@@ -43,7 +43,12 @@
                     </label>
                 </td>
 
-                <td><a href="{{ path('users_profile', {username: user.username}) }}">{{ user.username }}</a></td>
+                <td class="user">
+                    <a href="{{ path('users_profile', {username: user.username}) }}">
+                        <img src="{{ user.avatar|image('avatar_small') }}" />
+                        {{ user.username }}
+                    </a>
+                </td>
                 <td>{{ user.password }}</td>
 
                 <td class="hidden-480">

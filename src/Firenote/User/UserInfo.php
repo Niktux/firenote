@@ -34,4 +34,9 @@ class UserInfo extends UserDelegate implements UserInfoInterface
     {
         return $this->connectionCount;
     }
+    
+    public function isEnabled()
+    {
+        return $this->user->isEnabled();
+    }
 }

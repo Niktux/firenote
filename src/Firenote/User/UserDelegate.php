@@ -6,12 +6,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 abstract class UserDelegate implements UserInterface
 {
-    private
+    protected
         $user;
     
     public function __construct(UserInterface $user)
     {
-        $this->user = $user;
+       $this->user = $user;
     }
     
     public function getRoles()

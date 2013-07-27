@@ -31,9 +31,14 @@ class UserProvider implements UserProviderInterface
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
         }
         
+        return $this->createUserInfoFromRow($user);
+    }
+    
+    private function createUserInfoFromRow($row)
+    {
         return new UserInfo(
-            new User($user['username'], $user['password'], explode(',', $user['roles']), true, true, true, true),
-            $user['avatar'], null, 0
+            new User($row['username'], $row['password'], explode(',', $row['roles']), true, true, true, true),
+            $row['avatar'], null, 0
         );
     }
     
@@ -56,9 +61,7 @@ class UserProvider implements UserProviderInterface
         $users = array();
         while($user = $stmt->fetch())
         {
-            $users[] = new User(
-                $user['username'], $user['password'], explode(',', $user['roles']), true, true, true, true
-            );
+            $users[] = $this->createUserInfoFromRow($user);
         }
         
         return $users;
