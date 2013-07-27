@@ -164,7 +164,7 @@ class Application extends \Silex\Application
         };
         
         $this['file_upload.path'] =  $this['images.path'] . 'uploaded/';
-        $this['file_upload.maxsize'] =  160000; // in bytes
+        $this['file_upload.maxsize'] =  2100000; // in bytes
         $this['file_upload'] = function() use($app){
             return new FileUploadHandler($app['file_upload.path'], $app['file_upload.maxsize']);
         };
