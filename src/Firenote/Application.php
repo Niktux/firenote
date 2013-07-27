@@ -175,7 +175,7 @@ class Application extends \Silex\Application
         
         $this['images.format.path'] = $this['images.path'] . 'resized/';
         $this['image'] = $this->share(function() use($app){
-            return new Images\ImageHandler($this->configuration, $app['imagine'],  $app['images.format.path']);
+            return new Images\ImageHandler($this->configuration, $app['imagine'], $app['images.format.path']);
         });
     }
     
