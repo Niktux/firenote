@@ -3,7 +3,7 @@
                 {% block shortcuts %}
                     <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
                         {% for shortcut in page.shortcuts %}
-                        <a href="{{ path(shortcut.link) }}" class="btn btn-small btn-{{ shortcut.style }}">
+                        <a href="{{ path(shortcut.link, shortcut.linkParameters) }}" class="btn btn-small btn-{{ shortcut.style }}">
                             <i class="{{ shortcut.icon }}"></i>
                         </a>
                         {% endfor %}
@@ -36,7 +36,7 @@
                     {% if menu.hasSubmenus %}
                         <a href="#" class="dropdown-toggle">
                     {% else %}
-                        <a href="{{ path(menu.link) }}">
+                        <a href="{{ path(menu.link, menu.linkParameters) }}">
                     {% endif %}
                             <i class="{{ menu.icon }}"></i>
                             <span class="menu-text"> {{ menu.label }} </span>
@@ -47,7 +47,7 @@
                             <ul class="submenu">
                             {% for submenu in menu.submenus %}
                                 <li class="{{ page.app.color }} {% if submenu.link == currentRoute %}active{% endif %}" >
-                                    <a href="{{ path(submenu.link) }}">
+                                    <a href="{{ path(submenu.link, submenu.linkParameters) }}">
                                         <i class="icon-double-angle-right {{ page.app.color }}"></i>
                                         {{ submenu.label }}
                                     </a>

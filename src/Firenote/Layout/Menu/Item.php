@@ -29,6 +29,11 @@ class Item implements \Firenote\Layout\Menu
         return null;
     }
     
+    public function getLinkParameters()
+    {
+        return array();
+    }
+    
     public function hasSubmenus()
     {
         return false;

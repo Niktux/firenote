@@ -72,10 +72,16 @@ class AdminLayout
     {
         static $i = 0;
         
+        if(is_array($link) && count($link) < 2)
+        {
+            throw new \Firenote\Exception('Shortcut link is not valid');
+        }
+        
         $this->shortcuts[] = array(
             'style'  => $this->shortcutStyles[$i % self::MAX_SHORTCUTS],
             'icon'   => 'icon-' . $icon,
-            'link'   => $link,
+            'link'   => is_array($link) ? $link[0] : $link,
+            'linkParameters' => is_array($link) ? $link[1] : array(),
             'legend' => $legend,
         );
         
