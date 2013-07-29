@@ -19,7 +19,7 @@ class DatabaseCreate extends Command
     {
         $this->step('Creating schema');
         
-        $configuration = new \Firenote\Configuration\Yaml();
+        $configuration = new \Firenote\Configuration\Yaml($this->rootPath . 'config');
         $app = new \Firenote\Application($configuration);
         $schema = $app['db']->getSchemaManager();
         

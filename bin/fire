@@ -6,13 +6,20 @@ $files = array(
     __DIR__ . '/../../../autoload.php'
 );
 
+$rootPath = null;
 foreach($files as $file)
 {
-	if(is_file($file))
-	{
-		require $file;
-		break;
-	}
+    if(is_file($file))
+    {
+        $rootPath = dirname($file) . '/../';
+        require $file;
+        break;
+    }
 }
 
-Firenote\Console::run();
+if($rootPath === null)
+{
+    throw new RuntimeException('Cannot initialize autoloading');
+}
+
+Firenote\Console::run($rootPath);

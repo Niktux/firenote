@@ -24,9 +24,17 @@ abstract class Command extends \Symfony\Component\Console\Command\Command
 ASCII;
     
     protected
+        $rootPath,
         $input,
         $output,
         $dialog;
+    
+    public function __construct($rootPath)
+    {
+        parent::__construct('Firenote command');
+        
+        $this->rootPath = $rootPath;
+    }
     
     protected function writeln($messages, $type = OutputInterface::OUTPUT_NORMAL)
     {
