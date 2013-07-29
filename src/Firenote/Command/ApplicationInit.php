@@ -71,7 +71,7 @@ class ApplicationInit extends Command
     
         $this->database = $this->ask('Database : ', $defaultDatabase);
         $this->databaseUser = $this->ask('User : ', 'root');
-        $this->databasePassword = $this->ask('Password : ', '');
+        $this->databasePassword = $this->askPassword('Password : ', '');
     }
     
     private function setAppNameVariations()
