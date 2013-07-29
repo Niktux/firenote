@@ -39,7 +39,7 @@ class Application extends \Silex\Application
         $this['public_var.path'] = $this['rootDir.path'] . 'web/var/';
         $this['images.path']     = $this['public_var.path'] . 'images/';
         
-        $this->configuration = $configuration;
+        $this['configuration'] = $this->configuration = $configuration;
         
         $this->initializeDatabase();
         $this->initializeBuiltInServices();
