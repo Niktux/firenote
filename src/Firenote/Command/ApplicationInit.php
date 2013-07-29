@@ -27,7 +27,7 @@ class ApplicationInit extends Command
                 'workingDir',
                 InputArgument::OPTIONAL,
                 'Application working directory',
-                realpath(__DIR__ . '/../../..')
+                $this->rootPath
             )
         ;
     }

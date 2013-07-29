@@ -31,9 +31,9 @@ ASCII;
     
     public function __construct($rootPath)
     {
-        parent::__construct('Firenote command');
-        
         $this->rootPath = $rootPath;
+        
+        parent::__construct('Firenote command');
     }
     
     protected function writeln($messages, $type = OutputInterface::OUTPUT_NORMAL)
