@@ -24,38 +24,29 @@ class Yaml extends AbstractConfiguration
     
     public function exists($fqn)
     {
-        list($filename, $group, $variable) = $this->parseVariableDsn($fqn);
-
-        $config = $this->getYaml($filename);
-        
-        return isset($config[$group][$variable]);
+        return $this->getValue($fqn) !== null;
     }
 
-    public function groupExists($fqn)
-    {
-        list($filename, $group) = $this->parseGroupDsn($fqn);
-
-        $config = $this->getYaml($filename);
-        
-        return isset($config[$group]);
-    }
-    
     protected function getValue($fqn)
     {
-        list($filename, $group, $variable) = $this->parseVariableDsn($fqn);
+        $keys = $this->parseDsn($fqn);
+        $filename = array_shift($keys);
 
         $config = $this->getYaml($filename);
         
-        return $config[$group][$variable];
-    }
-
-    protected function getGroup($fqn)
-    {
-        list($filename, $group) = $this->parseGroupDsn($fqn);
-
-        $config = $this->getYaml($filename);
+        while(! empty($keys))
+        {
+            $key = array_shift($keys);
+            
+            if(!isset($config[$key]))
+            {
+                return null;
+            }
+            
+            $config = $config[$key];
+        }
         
-        return $config[$group];
+        return $config;
     }
 
     private function getYaml($alias)

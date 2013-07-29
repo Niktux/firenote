@@ -21,13 +21,6 @@ interface Configuration
      *
      *
      * @param string $fqn
-     */
-    public function readGroup($fqn);
-    
-    /**
-     *
-     *
-     * @param string $fqn
      *
      * @return mixed
      *
@@ -43,13 +36,4 @@ interface Configuration
      * @return boolean
      */
     public function exists($fqn);
-    
-    /**
-     *
-     *
-     * @param string $fqn
-     *
-     * @return boolean
-     */
-    public function groupExists($fqn);
 }

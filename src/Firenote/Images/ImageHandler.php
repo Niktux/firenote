@@ -19,7 +19,7 @@ class ImageHandler
     public function __construct(Configuration $configuration, ImagineInterface $imagine, $storageDir)
     {
         $this->configuration = $configuration;
-        $this->formats = $configuration->readGroup('images/formats', array());
+        $this->formats = $configuration->read('images/formats', array());
         $this->imagine = $imagine;
         $this->storageDir = rtrim($storageDir, '/') . '/';
     }
