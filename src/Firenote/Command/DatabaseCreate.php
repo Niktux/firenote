@@ -47,6 +47,7 @@ class DatabaseCreate extends Command
             $schema->createTable($users);
         
             $this->writeln('<info>Adding admin user (admin/foo) ...</info>');
+            $this->writeln('<comment>Please change this dummy password !</comment>');
         
             $app['db']->insert('users', array(
                 'username' => 'admin',
