@@ -4,6 +4,7 @@ namespace Firenote\Command;
 
 use Firenote\Command;
 use Doctrine\DBAL\Schema\Table;
+use Firenote\Configuration;
 
 class DatabaseCreate extends Command
 {
@@ -21,6 +22,9 @@ class DatabaseCreate extends Command
         
         $configuration = new \Firenote\Configuration\Yaml($this->rootPath . 'config');
         $app = new \Firenote\Application($configuration);
+        
+        $this->createDatabase($configuration);
+        
         $schema = $app['db']->getSchemaManager();
         
         if(! $schema instanceof \Doctrine\DBAL\Schema\AbstractSchemaManager)
@@ -61,6 +65,35 @@ class DatabaseCreate extends Command
         else
         {
             $this->writeln('Nothing to do !');
+        }
+    }
+    
+    private function createDatabase(Configuration $configuration)
+    {
+        $db = \Doctrine\DBAL\DriverManager::getConnection(array(
+            'driver'   => $configuration->read('db/server/driver', 'pdo_mysql'),
+            'host'     => $configuration->read('db/server/host', 'localhost'),
+            'port'     => $configuration->read('db/server/port', 3306),
+            'user'     => $configuration->read('db/server/user'),
+            'password' => $configuration->read('db/server/password'),
+            'charset'  => 'utf8'
+        ));
+        
+        $sm = $db->getSchemaManager();
+        $databases = $sm->listDatabases();
+        
+        $database = $configuration->read('db/server/database');
+        
+        if(! in_array($database, $databases))
+        {
+            $this->writeln("Create database $database ...");
+            $db->exec('CREATE DATABASE IF NOT EXISTS ' . $database);
+            
+            $databases = $sm->listDatabases();
+            if(! in_array($database, $databases))
+            {
+                throw new \RuntimeException('Cannot create database ' . $database);
+            }
         }
     }
 }
