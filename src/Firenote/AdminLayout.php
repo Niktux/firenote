@@ -110,6 +110,7 @@ class AdminLayout
     public function setAppName($appName)
     {
         $this->applicationInfo['name'] = $appName;
+        $this->session->setName(urlencode($appName));
         
         return $this;
     }
