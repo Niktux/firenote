@@ -46,19 +46,13 @@ class DatabaseCreate extends Command
         
             $schema->createTable($users);
         
-            $this->writeln('<info>Adding users ...</info>');
-            $app['db']->insert('users', array(
-                    'username' => 'fabien',
-                    'password' => '5FZ2Z8QIkA7UTZ4BYkoC+GsReLf569mSKDsfods6LYQ8t+a8EW9oaircfMpmaLbPBh4FOBiiFyLfuZmTSUwzZg==',
-                    'roles' => 'ROLE_USER',
-                    'avatar' => '/assets/firenote/avatars/avatar2.png',
-            ));
+            $this->writeln('<info>Adding admin user (admin/foo) ...</info>');
         
             $app['db']->insert('users', array(
-                    'username' => 'admin',
-                    'password' => '5FZ2Z8QIkA7UTZ4BYkoC+GsReLf569mSKDsfods6LYQ8t+a8EW9oaircfMpmaLbPBh4FOBiiFyLfuZmTSUwzZg==',
-                    'roles' => 'ROLE_ADMIN',
-                    'avatar' => '/assets/firenote/avatars/avatar2.png',
+                'username' => 'admin',
+                'password' => '5FZ2Z8QIkA7UTZ4BYkoC+GsReLf569mSKDsfods6LYQ8t+a8EW9oaircfMpmaLbPBh4FOBiiFyLfuZmTSUwzZg==',
+                'roles' => 'ROLE_ADMIN',
+                'avatar' => '/assets/firenote/avatars/avatar2.png',
             ));
 
         }
