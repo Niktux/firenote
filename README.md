@@ -1,4 +1,4 @@
-Firenote
+Firenote [![Build Status](http://jenkins.deboo.fr/job/Firenote/badge/icon)](http://jenkins.deboo.fr/job/Firenote/)
 ========
 
 PHP Admin skeleton over Silex
