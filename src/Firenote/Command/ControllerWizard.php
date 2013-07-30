@@ -27,8 +27,8 @@ class ControllerWizard extends Command
     protected function configure()
     {
         $this
-        ->setName('wizard:controller')
-        ->setDescription('Generates controller skeleton')
+            ->setName('wizard:controller')
+            ->setDescription('Generates controller skeleton')
         ;
     }
     
