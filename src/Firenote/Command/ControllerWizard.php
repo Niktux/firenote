@@ -39,7 +39,7 @@ class ControllerWizard extends Command
             
         $this->generate($rootNamespace, $namespace);
         
-        $this->postMortem($rootNamespace, $namespace);
+        $this->postMortem($namespace);
     }
     
     private function getRootNamespace()
@@ -130,7 +130,7 @@ class ControllerWizard extends Command
         }
     }
 
-    private function postMortem($rootNamespace, $namespace)
+    private function postMortem($namespace)
     {
         $message = "Do not forget to mount the new provider :";
         $this->writeln("<comment>$message</comment>");
