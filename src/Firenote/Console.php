@@ -11,6 +11,7 @@ class Console
         $app = new Application();
         $app->add(new Command\ApplicationInit($rootPath));
         $app->add(new Command\DatabaseCreate($rootPath));
+        $app->add(new Command\ControllerWizard($rootPath));
         $app->run();
     }
 }

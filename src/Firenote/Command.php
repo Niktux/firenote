@@ -85,9 +85,15 @@ ASCII;
         return str_pad($string, self::LINE_LENGTH);
     }
     
-    protected function ask($question, $defaultValue)
+    protected function ask($question, $defaultValue = null, array $autocomplete = null)
     {
-        $reply = $this->dialog->ask($this->output, "\n<question>$question</question> ", $defaultValue);
+        $reply = $this->dialog->ask(
+            $this->output,
+            "\n<question>$question</question> ",
+            $defaultValue,
+            $autocomplete
+        );
+        
         $this->writeln('');
         
         return $reply;
@@ -95,9 +101,34 @@ ASCII;
 
     protected function askPassword($question, $defaultValue)
     {
-        $reply = $this->dialog->askHiddenResponse($this->output, "\n<question>$question</question> ", $defaultValue);
+        $reply = $this->dialog->askHiddenResponse(
+            $this->output,
+            "\n<question>$question</question> ",
+            $defaultValue
+        );
+        
         $this->writeln('');
     
+        return $reply;
+    }
+    
+    protected function askAmongSelection($question, array $values, $defaultValue = 0, $displayDefaultValue = false)
+    {
+        $defaultMessage = '';
+        if($displayDefaultValue === true)
+        {
+            $defaultMessage = " (default : $values[0])";
+        }
+        
+        $reply = $this->dialog->select(
+            $this->output,
+            "\n<question>$question$defaultMessage</question> ",
+            $values,
+            $defaultValue
+        );
+        
+        $this->writeln('');
+        
         return $reply;
     }
     
