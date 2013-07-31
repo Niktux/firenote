@@ -4,6 +4,7 @@ namespace Firenote\Images;
 
 use Firenote\Configuration;
 use Imagine\Image\ImagineInterface;
+use Firenote\Exceptions\Images\InvalidSizeFormat;
 
 class ImageHandler
 {
@@ -98,14 +99,20 @@ class ImageHandler
         
         if(isset($formatDescription['resize']))
         {
-            $sizeStr = $formatDescription['resize'];
-            if(strpos($sizeStr, self::SIZE_DELIMITER) !== false)
-            {
-                list($width, $height) = explode(self::SIZE_DELIMITER, $sizeStr);
-                $transformation->resize(new \Imagine\Image\Box($width, $height));
-            }
+            list($width, $height) = $this->translateSizeString($formatDescription['resize']);
+            $transformation->resize(new \Imagine\Image\Box($width, $height));
         }
         
         return $transformation;
+    }
+    
+    private function translateSizeString($string)
+    {
+        if(strpos($string, self::SIZE_DELIMITER) === false)
+        {
+            throw new InvalidSizeFormat($string);
+        }
+           
+        return explode(self::SIZE_DELIMITER, $string);
     }
 }
