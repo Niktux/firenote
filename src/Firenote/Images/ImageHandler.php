@@ -101,8 +101,8 @@ class ImageHandler
             $sizeStr = $formatDescription['resize'];
             if(strpos($sizeStr, self::SIZE_DELIMITER) !== false)
             {
-                $dimensions = explode(self::SIZE_DELIMITER, $sizeStr);
-                $transformation->resize(new \Imagine\Image\Box($dimensions[0], $dimensions[1]));
+                list($width, $height) = explode(self::SIZE_DELIMITER, $sizeStr);
+                $transformation->resize(new \Imagine\Image\Box($width, $height));
             }
         }
         
