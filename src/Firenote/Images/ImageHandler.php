@@ -5,6 +5,7 @@ namespace Firenote\Images;
 use Firenote\Configuration;
 use Imagine\Image\ImagineInterface;
 use Firenote\Exceptions\Images\InvalidSizeFormat;
+use Firenote\Exceptions\Images\InvalidTransformation;
 
 class ImageHandler
 {
@@ -15,7 +16,8 @@ class ImageHandler
         $configuration,
         $formats,
         $imagine,
-        $storageDir;
+        $storageDir,
+        $filters;
     
     public function __construct(Configuration $configuration, ImagineInterface $imagine, $storageDir)
     {
@@ -23,6 +25,20 @@ class ImageHandler
         $this->formats = $configuration->read('images/formats', array());
         $this->imagine = $imagine;
         $this->storageDir = rtrim($storageDir, '/') . '/';
+        
+        $this->initializeFilters();
+    }
+    
+    private function initializeFilters()
+    {
+        $this->filters = array(
+
+            'resize' => function($transformation, $value) {
+                list($width, $height) = $this->translateSizeString($value);
+                $transformation->resize(new \Imagine\Image\Box($width, $height));
+            },
+            
+        );
     }
     
     public function applyFormat($imagePath, $format)
@@ -95,12 +111,14 @@ class ImageHandler
     {
         $transformation = new \Imagine\Filter\Transformation();
         
-        $formatDescription = $this->formats[$format];
-        
-        if(isset($formatDescription['resize']))
+        foreach($this->formats[$format] as $action => $value)
         {
-            list($width, $height) = $this->translateSizeString($formatDescription['resize']);
-            $transformation->resize(new \Imagine\Image\Box($width, $height));
+            if(!isset($this->filters[$action]))
+            {
+                throw new InvalidTransformationFilter($action);
+            }
+            
+            $this->filters[$action]($transformation, $value);
         }
         
         return $transformation;
