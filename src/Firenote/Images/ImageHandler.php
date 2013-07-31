@@ -6,6 +6,9 @@ use Firenote\Configuration;
 use Imagine\Image\ImagineInterface;
 use Firenote\Exceptions\Images\InvalidSizeFormat;
 use Firenote\Exceptions\Images\InvalidTransformation;
+use Imagine\Filter\FilterInterface;
+use Imagine\Image\ImageInterface;
+use Imagine\Filter\Transformation;
 
 class ImageHandler
 {
@@ -33,11 +36,15 @@ class ImageHandler
     {
         $this->filters = array(
 
-            'resize' => function($transformation, $value) {
+            'resize' => function(Transformation $transformation, $value) {
                 list($width, $height) = $this->translateSizeString($value);
                 $transformation->resize(new \Imagine\Image\Box($width, $height));
             },
             
+            'scale' => function(Transformation $transformation, $value) {
+                list($width, $height) = $this->translateSizeString($value);
+                $transformation->thumbnail(new \Imagine\Image\Box($width, $height), ImageInterface::THUMBNAIL_INSET);
+            },
         );
     }
     
@@ -109,7 +116,7 @@ class ImageHandler
     
     private function getTransformation($format)
     {
-        $transformation = new \Imagine\Filter\Transformation();
+        $transformation = new Transformation();
         
         foreach($this->formats[$format] as $action => $value)
         {
