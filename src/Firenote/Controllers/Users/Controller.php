@@ -31,6 +31,14 @@ class Controller extends \Firenote\Controllers\AbstractController
             ->setTitle('List')
             ->render('pages/users/list.twig', array(
                 'users' => $this->userProvider->listAll(),
+                'roleColors' => array(
+                    // FIXME
+                    'ROLE_ADMIN' => 'info',
+                    'ROLE_EDITOR' => 'success',
+                    'ROLE_USER' => 'danger',
+                    'ROLE_MODERATOR' => 'important',
+                    'ROLE_ANONYMOUS' => 'inverse',
+                ),
         ));
     }
     
@@ -40,7 +48,7 @@ class Controller extends \Firenote\Controllers\AbstractController
             ->setTitle('Create')
             ->render('pages/users/create.twig', array(
                 //FIXME
-                'roles' => array('ROLE_ADMIN', 'ROLE_EDITOR', 'ROLE_USER')
+                'roles' => array('ROLE_ADMIN', 'ROLE_EDITOR', 'ROLE_USER'),
         ));
     }
     

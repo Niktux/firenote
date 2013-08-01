@@ -16,20 +16,12 @@
     <table id="sample-table-1" class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
-                <th class="center">
-                    Enabled
-                </th>
-                <th>
-                    <i class="icon-user bigger-110"></i>
-                    Username
-                </th>
-                <th>
-                    <i class="icon-key bigger-110"></i>
-                    Password
-                </th>
-                <th class="hidden-480">Roles</th>
-
-                <th></th>
+                <th class="center span2"><i class="icon-ok-sign bigger-110"></i> Enabled</th>
+                <th><i class="icon-user bigger-110"></i> Username</th>
+                <th><i class="icon-male bigger-110"></i> Roles</th>
+                <th><i class="icon-time bigger-110"></i> Last seen</th>
+                <th><i class="icon-stackexchange bigger-110"></i> Connections</th>
+                <th><i class="icon-bolt bigger-110"></i> Actions</th>
             </tr>
         </thead>
 
@@ -38,7 +30,7 @@
             <tr>
                 <td class="center">
                     <label>
-                        <input type="checkbox" {% if user.enabled %}checked{% endif %}/>
+                        <input type="checkbox" {% if user.enabled %}checked{% endif %} disabled/>
                         <span class="lbl"></span>
                     </label>
                 </td>
@@ -49,21 +41,30 @@
                         {{ user.username }}
                     </a>
                 </td>
-                <td>{{ user.password }}</td>
-
+                
                 <td class="hidden-480">
                 {% for role in user.roles %}
-                    <span class="label label-warning">{{ role }}</span>
+                    <span class="label label-{{ attribute(roleColors,role) }}">{{ role }}</span>
                 {% endfor %}
                 </td>
-
+                                
+                <td>
+                </td>
+                
+                <td>
+                </td>
+                
                 <td>
                     <div class="hidden-phone visible-desktop btn-group">
-                        <button class="btn btn-mini btn-info">
+                        <a href="{{ path('users_profile', {username: user.username}) }}" class="btn btn-mini btn-success"  title="View {{ user.username }}">
+                            <i class="icon-eye-open bigger-120"></i>
+                        </a>
+                        
+                        <a href="" class="btn btn-mini btn-info"  title="Edit {{ user.username }}">
                             <i class="icon-edit bigger-120"></i>
-                        </button>
+                        </a>
 
-                        <a href="{{ path('users_delete', {username: user.username}) }}" class="btn btn-mini btn-danger">
+                        <a href="{{ path('users_delete', {username: user.username}) }}" class="btn btn-mini btn-danger" title="Delete {{ user.username }}">
                             <i class="icon-trash bigger-120"></i>
                         </a>
                     </div>
@@ -101,9 +102,7 @@
     
     <div class="form-actions">
         <a href="{{ path('users_create') }}" class="btn btn-info">
-            <i class="icon-plus">
-                Add new user
-            </i>
+            <i class="icon-plus"></i> Add user
         </a>
     </div>
 {% endblock content %}
