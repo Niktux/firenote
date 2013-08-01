@@ -23,7 +23,7 @@ class UserProvider implements UserProviderInterface
     {
         $stmt = $this->db->executeQuery(
             'SELECT * FROM users WHERE username = ?',
-            array(strtolower($username))
+            array($username)
         );
     
         if (!$user = $stmt->fetch())
