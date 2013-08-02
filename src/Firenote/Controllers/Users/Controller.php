@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Firenote\FileUploadHandler;
+use Firenote\User\Roles;
 
 class Controller extends \Firenote\Controllers\AbstractController
 {
@@ -31,14 +32,7 @@ class Controller extends \Firenote\Controllers\AbstractController
             ->setTitle('List')
             ->render('pages/users/list.twig', array(
                 'users' => $this->userProvider->listAll(),
-                'roleColors' => array(
-                    // FIXME
-                    'ROLE_ADMIN' => 'info',
-                    'ROLE_EDITOR' => 'success',
-                    'ROLE_USER' => 'danger',
-                    'ROLE_MODERATOR' => 'important',
-                    'ROLE_ANONYMOUS' => 'inverse',
-                ),
+                'roleColors' => Roles::getRolesCSSLabel(),
         ));
     }
     
@@ -47,8 +41,7 @@ class Controller extends \Firenote\Controllers\AbstractController
         return $this->page
             ->setTitle('Create')
             ->render('pages/users/create.twig', array(
-                //FIXME
-                'roles' => array('ROLE_ADMIN', 'ROLE_EDITOR', 'ROLE_USER'),
+                'roles' => Roles::getAll(),
         ));
     }
     
