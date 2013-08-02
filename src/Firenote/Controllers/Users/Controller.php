@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Firenote\FileUploadHandler;
 use Firenote\User\Roles;
+use Firenote\Exceptions\User as Exceptions;
 
 class Controller extends \Firenote\Controllers\AbstractController
 {
@@ -69,8 +70,16 @@ class Controller extends \Firenote\Controllers\AbstractController
     
     public function registerAction()
     {
-        // FIXME filter security
-        $user = $this->createUser($this->request);
+        try
+        {
+            $user = $this->createUser($this->request);
+        }
+        catch(\Firenote\Exception $e)
+        {
+            $this->addFlash('danger', $e->getMessage());
+            
+            return $this->redirect('users_create');
+        }
 
         $this->addOperationStatusFlash(
             $user instanceof UserInterface,
@@ -84,12 +93,11 @@ class Controller extends \Firenote\Controllers\AbstractController
     // FIXME draft without any checks
     private function createUser(Request $request)
     {
+        $this->checkRequiredFields($request);
+        
         if($request->get('password') !== $request->get('password2'))
         {
-            // FIXME double flash
-            $this->session->getFlashBag()->add('danger', 'Password mismatch');
-            
-            return null;
+            throw new Exceptions\UserCreation('Password mismatch');
         }
         
         $avatar = $this->upload->retrieve('avatar', array('png', 'jpg', 'jpeg', 'gif'));
@@ -101,6 +109,30 @@ class Controller extends \Firenote\Controllers\AbstractController
             array($request->get('roles')),
             $avatar
         );
+    }
+    
+    private function checkRequiredFields(Request $request)
+    {
+        $requiredFields = array(
+            'login',
+            'password',
+            'password2',
+            'roles',
+        );
+        
+        foreach($requiredFields as $field)
+        {
+            if($request->request->has($field) === false)
+            {
+                throw new Exceptions\UserCreation($field . ' must be filled');
+            }
+            
+            $value = $request->get($field);
+            if(empty($value))
+            {
+                throw new Exceptions\UserCreation($field . ' must be filled');
+            }
+        }
     }
     
     public function profileAction($username)
