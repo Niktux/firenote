@@ -112,7 +112,7 @@ class FileUploadHandler
     
     private function securityCheck($pathInfo, array $allowedExtensions)
     {
-        if(! isset($pathinfo['extension']) || ! in_array($pathInfo['extension'], $allowedExtensions))
+        if(! isset($pathInfo['extension']) || ! in_array($pathInfo['extension'], $allowedExtensions))
         {
             throw new Security('Not allowed image extension : ' . isset($pathInfo['extension']) ?: '');
         }
